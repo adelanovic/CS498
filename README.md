@@ -1,5 +1,4 @@
-# CS498
-CS498
+# CS498 - Professor Scott Spetka
 
 # Capstone Proposal
 
