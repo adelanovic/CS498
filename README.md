@@ -15,12 +15,18 @@ several tasks that I wish to accomplish during this project.
 
 • Learn MongoDB/Java and how they can be used together to create and manage a
 database.
+
 • User level Permissions. A regular employee would not have the same access that a
 supervisor would.
+
 • Authentication to login to the application
+
 • A proper GUI that allows for the ease of use of the application.
+
 • Properly update values with UI using CRUD
+
 • Ensure al updates are atomic.
+
 • Possible concurrency issues with multiple programs running.
 
   My inspiration for this project is that my workplace still uses paper for scheduling,
