@@ -1,11 +1,11 @@
 PersonnelManager/MongoDriver.java
  PersonnelManager.MongoDriver
-PersonnelManager/GUI/dashboardControl.java
- PersonnelManager.GUI.dashboardControl
-PersonnelManager/Employee.java
- PersonnelManager.Employee
 PersonnelManager/Supervisor.java
  PersonnelManager.Supervisor
+PersonnelManager/Employee.java
+ PersonnelManager.Employee
+PersonnelManager/GUI/dashboardControl.java
+ PersonnelManager.GUI.dashboardControl
 PersonnelManager/GUI/loginControl.java
  PersonnelManager.GUI.loginControl
 PersonnelManager/RunProgram.java

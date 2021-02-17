@@ -19,11 +19,11 @@ public class PersonnelManager extends Application
         dashboardControl dash = new dashboardControl();
         FXMLLoader load_login = new FXMLLoader();
         Parent root = FXMLLoader.load(getClass().getResource("/views/login_page.fxml"));
-        primaryStage.setScene(new Scene(root, 443, 443));
-        primaryStage.setMaxWidth(443.0);
-        primaryStage.setMaxHeight(598);
+        primaryStage.setScene(new Scene(root, 1000, 443));
         primaryStage.show();
-
+        primaryStage.setMaxWidth(443);
+        primaryStage.setMaxHeight(600);
+        primaryStage.setResizable(false);
         /*
         primaryStage.setTitle("Personnel Manager");
 
