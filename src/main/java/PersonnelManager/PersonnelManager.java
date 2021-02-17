@@ -1,20 +1,30 @@
 package PersonnelManager;
 
+import PersonnelManager.GUI.dashboardControl;
 import javafx.application.Application;
-import javafx.geometry.Pos;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class PersonnelManager extends Application
 {
 
     @Override
-    public void start(Stage primaryStage)
-    {
+    public void start(Stage primaryStage) throws IOException {
+
+        dashboardControl dash = new dashboardControl();
+        FXMLLoader load_login = new FXMLLoader();
+        Parent root = FXMLLoader.load(getClass().getResource("/views/login_page.fxml"));
+        primaryStage.setScene(new Scene(root, 443, 443));
+        primaryStage.setMaxWidth(443.0);
+        primaryStage.setMaxHeight(598);
+        primaryStage.show();
+
+        /*
         primaryStage.setTitle("Personnel Manager");
 
         Button connect_btn = new Button();
@@ -78,6 +88,8 @@ public class PersonnelManager extends Application
                 mongo_driver.connect_database();
             }
         });
+
+         */
 
     }
 }

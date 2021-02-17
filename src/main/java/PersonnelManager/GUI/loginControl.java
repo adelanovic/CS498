@@ -18,10 +18,10 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class dashboardControl {
-   @FXML public AnchorPane loginPane;
+public class loginControl {
+    @FXML public AnchorPane loginPane;
 
-   private void displayLogin(Event e){
-       loginPane.setVisible(true);
-   }
+    private void displayLogin(Event e){
+        loginPane.setVisible(true);
+    }
 }

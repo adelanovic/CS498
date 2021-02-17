@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="329.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonnelManager.GUI.dashboardControl">
+<AnchorPane id="loginPane" fx:id="loginPane" prefHeight="329.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonnelManager.GUI.dashboardControl">
    <children>
       <ImageView fitHeight="443.0" fitWidth="598.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Resources/login.jpg" />
+            <Image url="@../images/login.jpg" />
          </image>
       </ImageView>
       <PasswordField alignment="BOTTOM_RIGHT" layoutX="232.0" layoutY="42.0" prefHeight="26.0" prefWidth="178.0" promptText="Password" />
