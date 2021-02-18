@@ -15,6 +15,7 @@ import org.bson.Document;
 import com.mongodb.client.MongoCollection;
 
 import java.util.Iterator;
+import java.util.logging.Level;
 
 
 public class MongoDriver
@@ -36,6 +37,9 @@ public class MongoDriver
 
     public void connect_database()
     {
+        //Sets a level to the JULLogger, lots of visible text in red on console.
+        java.util.logging.Logger.getLogger("org.mongodb.driver").setLevel(Level.SEVERE);
+
         try
         {
             //Create a connection string

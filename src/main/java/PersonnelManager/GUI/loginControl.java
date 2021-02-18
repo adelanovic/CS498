@@ -1,27 +1,28 @@
 package PersonnelManager.GUI;
 
+import PersonnelManager.MongoDriver;
 import javafx.event.Event;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.MeshView;
-import javafx.scene.shape.TriangleMesh;
-import javafx.stage.FileChooser;
 import javafx.fxml.FXML;
-import java.io.*;
-import java.net.URL;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
+
+
+/* This class is responsible for logging into the Database */
 
 public class loginControl {
     @FXML public AnchorPane loginPane;
+    @FXML public PasswordField passwordField;
 
-    private void displayLogin(Event e){
+    @FXML private void passwordEntered(KeyEvent e) {
+        if (e.getCode().equals(KeyCode.ENTER)) {
+            MongoDriver mongo_driver = new MongoDriver();
+            mongo_driver.connect_database();
+        }
+    }
+
+    @FXML private void displayLogin(Event e){
         loginPane.setVisible(true);
     }
 }

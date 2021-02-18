@@ -6,14 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="loginPane" fx:id="loginPane" prefHeight="329.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonnelManager.GUI.dashboardControl">
+<AnchorPane id="loginPane" fx:id="loginPane" prefHeight="455.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonnelManager.GUI.loginControl">
     <children>
-        <ImageView fitHeight="443.0" fitWidth="598.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="465.0" fitWidth="478.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../images/login_two.jpg" />
             </image>
         </ImageView>
-        <PasswordField id="passwordField" fx:id="passwordField" alignment="BOTTOM_LEFT" blendMode="COLOR_DODGE" cache="true" layoutX="133.0" layoutY="403.0" prefHeight="26.0" prefWidth="177.0" promptText="Password" />
-        <TextField id="usernameField" fx:id="usernameField" blendMode="COLOR_DODGE" layoutX="133.0" layoutY="369.0" prefHeight="25.0" prefWidth="177.0" promptText="Username" />
+        <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" blendMode="COLOR_DODGE" cache="true" layoutX="152.0" layoutY="412.0" onKeyPressed="#passwordEntered" prefHeight="26.0" prefWidth="177.0" promptText="Password, then press Enter" />
+        <TextField id="usernameField" fx:id="usernameField" alignment="TOP_CENTER" blendMode="COLOR_DODGE" layoutX="152.0" layoutY="378.0"  prefHeight="25.0" prefWidth="177.0" promptText="Username" />
     </children>
 </AnchorPane>
