@@ -45,4 +45,8 @@ public class loginControl {
     @FXML private void displayLogin(Event e){
         loginPane.setVisible(true);
     }
+
+    @FXML private void hideLogin(Event e){
+        loginPane.setVisible(false);
+    }
 }

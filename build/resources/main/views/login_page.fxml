@@ -20,6 +20,6 @@
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></TextField>
-      <Text fill="WHITE" layoutX="187.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press Enter to Login" wrappingWidth="107.0" />
+      <Text fill="WHITE" layoutX="187.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press Enter to Login" wrappingWidth="107.0" />
     </children>
 </AnchorPane>
