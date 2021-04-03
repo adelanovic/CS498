@@ -9,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
+import org.graalvm.compiler.asm.sparc.SPARCAssembler;
 
 
 /* This class is responsible for logging into the Database */
@@ -16,10 +18,11 @@ import javafx.fxml.FXML;
 public class loginStage {
     @FXML public AnchorPane loginPane;
     @FXML public PasswordField passwordField;
-    @FXML public TextField usernameField;
+    @FXML private Button loginBtn;
+    public TextField usernameField;
     public static mongodbStream activeUser = new mongodbStream();
-    public static mainStage parentStage;
-    public Button loginBtn;
+    private FXMLLoader mainStageLoader;
+    public static parentmainStage mainStage;
 
 
     @FXML
@@ -28,19 +31,13 @@ public class loginStage {
             activeUser.setPassword(passwordField.getText());
             activeUser.setEmailAddress(usernameField.getText());
             activeUser.connectDatabase();
-
-            FXMLLoader loadParentStage = new FXMLLoader(getClass().getResource("/views/parentStage.fxml"));
-            Parent root = (Parent) loadParentStage.load();
-            parentStage = loadParentStage.getController();
+            mainStageLoader = new FXMLLoader(getClass().getResource("/stages/parentStage.fxml"));
+            Parent root = mainStageLoader.load();
+            mainStage = mainStageLoader.getController();
             loginBtn.getScene().setRoot(root);
 
-            parentStage.viewsLoader = new FXMLLoader(getClass().getResource("/views/regemployeeStage.fxml"));
-            Parent regEmployeesMain = (Parent) parentStage.viewsLoader.load();
-            parentStage.employeeVew = parentStage.viewsLoader.getController();
-            parentStage.mainstageAnchorPane.getChildren().setAll(regEmployeesMain);
-
         } catch (Exception loadException){
-            // Handle exception if fxml document fails to load and show properly
+            //
         }
 
     }

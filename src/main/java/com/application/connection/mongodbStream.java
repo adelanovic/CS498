@@ -1,4 +1,6 @@
-package com.application.connection;/*
+package com.application.connection;
+
+/*
     Name: Adis Delanovic
     Class: CS498 Capstone Project
     Instructor: Professor Spetka, Scott
@@ -17,7 +19,6 @@ import com.mongodb.client.MongoCollection;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
 import java.util.logging.Level;
 
 
@@ -46,9 +47,11 @@ public class mongodbStream
         try
         {
             //Create a connection string
-            ConnectionString connectString = new ConnectionString(
-                    "mongodb://" + encodeValue(getUsername()) + ":" + getPassword() + "@realm.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=securityforces-fjzcg:Employees:local-userpass");
+           //ConnectionString connectString = new ConnectionString(
+                   // "mongodb://" + encodeValue(getUsername()) + ":" + getPassword() + "@realm.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=securityforces-fjzcg:mongodb-atlas:local-userpass");
 
+
+            ConnectionString connectString = new ConnectionString("mongodb+srv://delanoa:capstone@test.8i0hk.mongodb.net/TestDB?retryWrites=true&w=majority");
 
 
 
@@ -61,8 +64,8 @@ public class mongodbStream
             //Create the connection
             mongo_client = MongoClients.create(settings);
             System.out.println("Connected");
-            database = mongo_client.getDatabase("Employees");
-            MongoCollection<Document> collection = database.getCollection("Employees");
+            database = mongo_client.getDatabase("TestDB");
+            MongoCollection<Document> collection = database.getCollection("Testing");
 
             // Retrieving the documents
             FindIterable<Document> iterDoc = collection.find();
