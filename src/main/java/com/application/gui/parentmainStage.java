@@ -8,10 +8,10 @@ import javafx.scene.layout.AnchorPane;
 
 public class parentmainStage {
     public FXMLLoader viewsLoader;
-    public regemployeeStage employeeVew;
-
-    @FXML
-    public AnchorPane mainstageAnchorPane;
+    public regemployeeStage regEmployees;
+    @FXML public AnchorPane mainstageAnchorPane;
+    @FXML public AnchorPane mainView;
+    @FXML public AnchorPane menuBarAnchorPane;
 
     public void accountMenuBtnClicked(ActionEvent actionEvent) {
     }

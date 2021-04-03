@@ -3,14 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="dashboardAnchorPane" fx:id="dashboardAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.parentmainStage">
+<AnchorPane id="dashboardAnchorPane" fx:id="mainstageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.parentmainStage">
    <children>
       <AnchorPane id="menuBarAnchorPane" fx:id="menuBarAnchorPane" prefHeight="40.0" prefWidth="318.0" style="-fx-background-color: #003087;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button id="navigationMenuBtn" fx:id="navigationMenuBtn" mnemonicParsing="false" onAction="#navigationMenuBtnClicked" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: none;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Button id="accountMenuBtn" fx:id="accountMenuBtn" mnemonicParsing="false" onAction="#accountMenuBtnClicked" prefHeight="40.0" prefWidth="60.0" style="-fx-background-color: none;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         </children>
       </AnchorPane>
-      <AnchorPane id="dashViewsAnchorPane" fx:id="dashViewsAnchorPane" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane id="dashViewsAnchorPane" fx:id="mainView" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
    </children>
 </AnchorPane>

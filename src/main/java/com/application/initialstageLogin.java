@@ -27,9 +27,9 @@ public class initialstageLogin extends Application
             primaryStage.getIcons().add(new Image(initialstageLogin.class.getResourceAsStream("/images/af_icon.png")));
             primaryStage.setScene(new Scene(root, 478, 503));
             primaryStage.show();
-            primaryStage.setMaxWidth(478);
-            primaryStage.setMaxHeight(503);
-            primaryStage.setResizable(false);
+            primaryStage.setMaxWidth(1000);
+            primaryStage.setMaxHeight(1000);
+            primaryStage.setResizable(true);
 
         }catch(Exception e){
             e.printStackTrace();

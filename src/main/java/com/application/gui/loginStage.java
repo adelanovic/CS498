@@ -9,9 +9,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
-import javafx.stage.Stage;
-import org.graalvm.compiler.asm.sparc.SPARCAssembler;
-
 
 /* This class is responsible for logging into the Database */
 
@@ -21,7 +18,6 @@ public class loginStage {
     @FXML private Button loginBtn;
     public TextField usernameField;
     public static mongodbStream activeUser = new mongodbStream();
-    private FXMLLoader mainStageLoader;
     public static parentmainStage mainStage;
 
 
@@ -31,22 +27,18 @@ public class loginStage {
             activeUser.setPassword(passwordField.getText());
             activeUser.setEmailAddress(usernameField.getText());
             activeUser.connectDatabase();
-            mainStageLoader = new FXMLLoader(getClass().getResource("/stages/parentStage.fxml"));
+            FXMLLoader mainStageLoader = new FXMLLoader(getClass().getResource("/stages/parentStage.fxml"));
             Parent root = mainStageLoader.load();
             mainStage = mainStageLoader.getController();
             loginBtn.getScene().setRoot(root);
 
+            mainStage.viewsLoader = new FXMLLoader(getClass().getResource("/stages/regularEmployee.fxml"));
+            Parent employeesRoot = mainStage.viewsLoader.load();
+            mainStage.regEmployees = mainStage.viewsLoader.getController();
+            mainStage.mainView.getChildren().setAll(employeesRoot);
+
         } catch (Exception loadException){
             //
         }
-
-    }
-
-    @FXML private void displayLogin(Event e){
-        loginPane.setVisible(true);
-    }
-
-    @FXML private void hideLogin(Event e){
-        loginPane.setVisible(false);
     }
 }
