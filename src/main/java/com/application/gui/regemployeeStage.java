@@ -10,7 +10,7 @@ import java.awt.*;
 import java.io.IOException;
 
 
-public class dashboardControl {
+public class regemployeeStage {
     @FXML private AnchorPane mainDashboard;
     @FXML private TabPane tabPane;
     @FXML private Tab contactTab;

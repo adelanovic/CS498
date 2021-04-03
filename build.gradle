@@ -9,7 +9,7 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
-group 'com.PersonnelManager'
+group 'com.application'
 version '1.0'
 
 sourceCompatibility = 1.8
@@ -24,10 +24,11 @@ repositories {
 dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '7.1.0'
     compile group: 'org.mongodb', name: 'mongodb-driver', version: '3.12.7'
+    compile group: 'commons-io', name: 'commons-io', version: '2.8.0'
 }
 
 test {
     useTestNG()
 }
 
-mainClassName = "com.PersonnelManager.RunProgram"
+mainClassName = "com.application.launchApp"
