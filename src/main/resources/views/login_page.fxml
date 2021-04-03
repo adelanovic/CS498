@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="loginPane" fx:id="loginPane" prefHeight="455.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PersonnelManager.GUI.loginControl">
+<AnchorPane id="loginPane" fx:id="loginPane" prefHeight="455.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.loginControl">
     <children>
         <ImageView fitHeight="465.0" fitWidth="478.0" pickOnBounds="true" preserveRatio="true">
             <image>

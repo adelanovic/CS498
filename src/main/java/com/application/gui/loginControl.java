@@ -1,6 +1,6 @@
-package PersonnelManager.GUI;
+package com.application.gui;
 
-import PersonnelManager.MongoDriver;
+import com.application.connection.mongodbStream;
 import com.mongodb.MongoCommandException;
 import javafx.event.Event;
 import javafx.scene.control.Alert;
@@ -32,8 +32,8 @@ public class loginControl {
                 }
                 else {
 
-                    MongoDriver mongo_driver = new MongoDriver();
-                    mongo_driver.connect_database();
+                    mongodbStream mongoStream = new mongodbStream();
+                    mongoStream.connect_database();
                 }
             }
         }catch(MongoCommandException e){

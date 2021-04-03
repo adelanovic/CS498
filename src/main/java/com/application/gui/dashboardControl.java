@@ -1,4 +1,4 @@
-package PersonnelManager.GUI;
+package com.application.gui;
 
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
