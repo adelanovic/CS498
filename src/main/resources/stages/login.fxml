@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="loginPane" fx:id="loginPane" prefHeight="455.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.loginStage">
+<AnchorPane id="loginPane" fx:id="loginPane" cache="true" prefHeight="650.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.loginStage">
     <children>
-        <ImageView fitHeight="465.0" fitWidth="478.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="loginBtn" layoutX="661.0" layoutY="399.0" mnemonicParsing="false" onAction="#loginClicked" prefHeight="41.0" prefWidth="244.0" style="-fx-background-color: #003087;" text="Login" textFill="WHITE" />
+        <ImageView fitHeight="659.0" fitWidth="642.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,2), 2,2,2,2);">
             <image>
-                <Image url="@../images/login_two.jpg" />
+                <Image url="@../images/login.jpg" />
             </image>
         </ImageView>
-        <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" blendMode="COLOR_DODGE" cache="true" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="152.0" layoutY="412.0" prefHeight="26.0" prefWidth="177.0" promptText="Password" scaleShape="false" />
-        <TextField id="usernameField" fx:id="usernameField" alignment="TOP_CENTER" blendMode="COLOR_DODGE" layoutX="152.0" layoutY="378.0" prefHeight="25.0" prefWidth="177.0" promptText="Username" snapToPixel="false">
+      <Button fx:id="loginBtn1" layoutX="661.0" layoutY="450.0" mnemonicParsing="false" onAction="#loginClicked" prefHeight="41.0" prefWidth="244.0" style="-fx-background-color: #003087;" text="Exit" textFill="WHITE" />
+        <TextField id="usernameField" fx:id="usernameField" alignment="TOP_CENTER" blendMode="DARKEN" layoutX="661.0" layoutY="289.0" prefHeight="36.0" prefWidth="244.0" promptText="Username" snapToPixel="false">
          <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor></TextField>
-      <Button layoutX="354.0" layoutY="378.0" mnemonicParsing="false" fx:id="loginBtn" onAction="#loginClicked" text="Log in" />
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets></TextField>
+        <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" cache="true" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="661.0" layoutY="332.0" prefHeight="35.0" prefWidth="244.0" promptText="Password" scaleShape="false">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor></PasswordField>
+      <CheckBox layoutX="661.0" layoutY="502.0" mnemonicParsing="false" text="Supervisor Mode" underline="true" />
+      <CheckBox layoutX="661.0" layoutY="537.0" mnemonicParsing="false" text="Show Password" />
     </children>
 </AnchorPane>
