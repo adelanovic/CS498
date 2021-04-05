@@ -4,11 +4,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="dashboardAnchorPane" fx:id="mainstageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.parentmainStage">
+<AnchorPane id="dashboardAnchorPane" fx:id="mainstageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.parentmainStage">
    <children>
       <AnchorPane id="menuBarAnchorPane" fx:id="menuBarAnchorPane" prefHeight="40.0" prefWidth="318.0" style="-fx-background-color: ffffff; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="963.0" layoutY="7.0">
+            <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="880.0" layoutY="7.0">
                <image>
                   <Image url="@../images/user_menu.png" />
                </image>
