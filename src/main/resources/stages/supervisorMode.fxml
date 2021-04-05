@@ -12,22 +12,22 @@
    <children>
       <Pane id="menuBar" layoutX="-11.0" layoutY="184.0" prefHeight="42.0" prefWidth="930.0" style="-fx-background-color: #003087;">
          <children>
-            <Button fx:id="schedulingBtn" layoutX="75.0" layoutY="5.0" mnemonicParsing="false" onAction="#displaySchedulePane" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Scheduling" textFill="WHITE">
+            <Button id="menuButtons" fx:id="schedulingBtn" layoutX="75.0" layoutY="5.0" mnemonicParsing="false" onAction="#displaySchedulePane" prefHeight="31.0" prefWidth="184.0" text="Scheduling" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="requestsOffBtn" layoutX="275.0" layoutY="5.0" mnemonicParsing="false" onAction="#requestTimeOffPanee" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Time Off Requests" textFill="WHITE">
+            <Button id="menuButtons" fx:id="requestsOffBtn" layoutX="275.0" layoutY="5.0" mnemonicParsing="false" onAction="#requestTimeOffPanee" prefHeight="31.0" prefWidth="184.0" text="Time Off Requests" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="passdownsBtn" layoutX="475.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayDailyPassdownsPane" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Daily Passdowns" textFill="WHITE">
+            <Button id="menuButtons" fx:id="passdownsBtn" layoutX="475.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayDailyPassdownsPane" prefHeight="31.0" prefWidth="184.0" text="Daily Passdowns" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="resourcesBtn" layoutX="675.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayResourcesPane" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Resources" textFill="WHITE">
+            <Button id="menuButtons" fx:id="resourcesBtn" layoutX="675.0" layoutY="5.0" mnemonicParsing="false" onAction="#displayResourcesPane" prefHeight="31.0" prefWidth="184.0" text="Resources" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
@@ -40,6 +40,6 @@
             <Image url="@../images/defensor-fortis.png" />
          </image>
       </ImageView>
-      <Pane id="schedulePane" layoutY="225.0" prefHeight="426.0" prefWidth="919.0" />
+      <Pane id="schedulePane" layoutX="-5.0" layoutY="226.0" prefHeight="425.0" prefWidth="924.0" />
    </children>
 </AnchorPane>
