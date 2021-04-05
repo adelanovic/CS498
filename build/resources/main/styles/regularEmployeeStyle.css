@@ -1,0 +1,38 @@
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #003087;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #828282;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-family: "Arial Rounded MT Bold";
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+}
+
+.tab {
+    -fx-background-color: #ffffff;
+}
+
+#personalInfo
+{
+    -fx-background-color: white;
+}
+
+#mainHeader{
+    -fx-font-family: "Baskerville Old Face";
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+}
+
+#fortis{
+    -fx-border-color: black;
+    -fx-border-width: 10px;
+}
