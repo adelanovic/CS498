@@ -39,7 +39,7 @@ public class loginStage {
             if(supervisorMode.isSelected()) {
                 mainStage.viewsLoader = new FXMLLoader(getClass().getResource("/stages/supervisorMode.fxml"));
                 Parent supervisorRoot = mainStage.viewsLoader.load();
-                mainStage.regEmployees = mainStage.viewsLoader.getController();
+                mainStage.supervisorMode = mainStage.viewsLoader.getController();
                 mainStage.mainView.getChildren().setAll(supervisorRoot);
             }
             else{

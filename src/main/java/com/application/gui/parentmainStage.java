@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 public class parentmainStage {
     public FXMLLoader viewsLoader;
     public regemployeeStage regEmployees;
+    public supervisorModeStage supervisorMode;
     @FXML public AnchorPane mainstageAnchorPane;
     @FXML public AnchorPane mainView;
     @FXML public AnchorPane menuBarAnchorPane;
