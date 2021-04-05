@@ -25,7 +25,7 @@ public class initialstageLogin extends Application
             loadLogin.setController(logIn);
             Parent root = FXMLLoader.load(getClass().getResource("/stages/login.fxml"));
             primaryStage.getIcons().add(new Image(initialstageLogin.class.getResourceAsStream("/images/af_icon.png")));
-            primaryStage.setScene(new Scene(root, 919, 650));
+            primaryStage.setScene(new Scene(root, 919, 690));
             primaryStage.show();
             primaryStage.setMaxWidth(1000);
             primaryStage.setMaxHeight(1000);

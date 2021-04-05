@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="dashboardAnchorPane" fx:id="mainstageAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.parentmainStage">
    <children>
-      <AnchorPane id="menuBarAnchorPane" fx:id="menuBarAnchorPane" prefHeight="40.0" prefWidth="318.0" style="-fx-background-color: #003087;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      </AnchorPane>
+      <AnchorPane id="menuBarAnchorPane" fx:id="menuBarAnchorPane" prefHeight="40.0" prefWidth="318.0" style="-fx-background-color: ffffff; -fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="27.0" fitWidth="31.0" layoutX="963.0" layoutY="7.0">
+               <image>
+                  <Image url="@../images/user_menu.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
       <AnchorPane id="dashViewsAnchorPane" fx:id="mainView" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
    </children>
 </AnchorPane>

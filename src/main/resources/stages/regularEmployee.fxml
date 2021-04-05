@@ -16,13 +16,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: E5E5E5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.regemployeeStage">
+<AnchorPane fx:id="mainDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: #003087; -fx-border-radius: 3;" stylesheets="@../styles/regularEmployeeStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.regemployeeStage">
    <children>
       <TabPane layoutY="184.0" prefHeight="459.0" prefWidth="919.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab closable="false" text="Main Page">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="919.0" style="-fx-background-color: E5E5E5;">
+              <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="919.0">
                      <children>
                         <TextField fx:id="firstName" layoutX="27.0" layoutY="75.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
                         <Button fx:id="editPersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Contact Information" textFill="WHITE" />
@@ -69,7 +69,7 @@
           </Tab>
           <Tab text="Emergency Contact">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="27.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
                         <TextField fx:id="emergencyName" layoutX="27.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
@@ -111,7 +111,7 @@
           </Tab>
             <Tab text="Leave Balances">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="23.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Time" />
                         <Text layoutX="23.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sick Time" />
@@ -162,7 +162,7 @@
             </Tab>
             <Tab text="Scheduled Posts">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -178,7 +178,7 @@
             </Tab>
             <Tab text="BOLO Alerts">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
@@ -192,11 +192,28 @@
                   </AnchorPane>
                </content>
             </Tab>
+            <Tab text="Resources">
+               <content>
+                  <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <children>
+                        <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
-      <ImageView fitHeight="165.0" fitWidth="170.0" layoutX="747.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+      <Text id="mainHeader" fill="WHITE" layoutX="106.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="U.S Air Force Security Forces Management System" textAlignment="CENTER" wrappingWidth="324.08984375" />
+      <ImageView id="defensorFortis" fitHeight="184.0" fitWidth="307.0" layoutX="612.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/sf_logo.jpg" />
+            <Image url="@../images/defensor-fortis.png" />
          </image>
       </ImageView>
    </children>

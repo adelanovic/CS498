@@ -16,22 +16,22 @@
       </ImageView>
       <Pane layoutX="-11.0" layoutY="190.0" prefHeight="42.0" prefWidth="930.0" style="-fx-background-color: #00308f;">
          <children>
-            <Button fx:id="schedulingBtn" layoutX="75.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Scheduling" textFill="WHITE">
+            <Button fx:id="schedulingBtn" layoutX="75.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" onAction="#displaySchedulePane" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Scheduling" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="requestsOffBtn" layoutX="275.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Time Off Requsts" textFill="WHITE">
+            <Button fx:id="requestsOffBtn" layoutX="275.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" onAction="#requestTimeOffPanee" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Time Off Requests" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="passdownsBtn" layoutX="475.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Daily Passdowns" textFill="WHITE">
+            <Button fx:id="passdownsBtn" layoutX="475.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" onAction="#displayDailyPassdownsPane"  style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Daily Passdowns" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="resourcesBtn" layoutX="675.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Resources" textFill="WHITE">
+            <Button fx:id="resourcesBtn" layoutX="675.0" layoutY="5.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" onAction="#displayResourcesPane" style="-fx-background-color: #1E90FF; -fx-background-radius: 10;" text="Resources" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
