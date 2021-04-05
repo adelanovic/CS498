@@ -1,4 +1,5 @@
 package com.application.databaseOps;
 
-public class supervisorIO {
+public class supervisorIO extends employeeIO {
+
 }

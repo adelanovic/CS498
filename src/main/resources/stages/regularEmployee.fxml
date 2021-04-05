@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -8,10 +11,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="mainDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: E5E5E5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="mainDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: E5E5E5;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane layoutY="184.0" prefHeight="459.0" prefWidth="919.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -19,32 +24,46 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="919.0" style="-fx-background-color: E5E5E5;">
                      <children>
-                        <TextField layoutX="28.0" layoutY="48.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
-                        <Text layoutX="28.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
-                        <Text layoutX="201.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
-                        <TextField layoutX="201.0" layoutY="48.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="28.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hire Date:" />
-                        <TextField layoutX="28.0" layoutY="108.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
+                        <TextField fx:id="firstName" layoutX="27.0" layoutY="75.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
+                        <Button fx:id="editPersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Contact Information" textFill="WHITE" />
+                        <Text layoutX="28.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+                        <Text layoutX="202.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+                        <TextField fx:id="lastName" layoutX="201.0" layoutY="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="629.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hire Date" />
+                        <TextField fx:id="hireDate" layoutX="629.0" layoutY="132.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
                         <Text layoutX="28.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <Text layoutX="201.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary:" />
-                        <TextField layoutX="201.0" layoutY="108.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="461.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Certifications" />
+                        <Text layoutX="629.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salary" />
+                        <TextField fx:id="salary" layoutX="629.0" layoutY="69.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="461.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Certifications" />
                         <Line endX="-100.0" endY="409.0" layoutX="498.0" layoutY="10.0" startX="-100.0" stroke="#00308f" />
-                        <TextArea layoutX="461.0" layoutY="220.0" prefHeight="87.0" prefWidth="315.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="460.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Next Evaluation" />
-                        <TextField layoutX="460.0" layoutY="48.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="460.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shift Assigned" />
-                        <TextField layoutX="461.0" layoutY="105.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="460.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supervisor" />
-                        <TextField layoutX="460.0" layoutY="162.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="28.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street Address" />
-                        <TextField layoutX="28.0" layoutY="170.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="28.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" />
-                        <Text layoutX="30.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zipcode" />
-                        <Text layoutX="29.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" />
-                        <TextField layoutX="28.0" layoutY="228.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <TextField layoutX="29.0" layoutY="346.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <TextField layoutX="28.0" layoutY="289.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <TextArea fx:id="certifications" layoutX="461.0" layoutY="250.0" prefHeight="89.0" prefWidth="321.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="456.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Next Evaluation" />
+                        <TextField fx:id="nextEvaluation" layoutX="456.0" layoutY="69.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="458.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shift Assigned" />
+                        <TextField fx:id="shiftAssigned" layoutX="458.0" layoutY="132.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="460.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supervisor" />
+                        <TextField fx:id="supervisor" layoutX="458.0" layoutY="190.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="28.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Street Address" />
+                        <TextField fx:id="streetAddress" layoutX="27.0" layoutY="132.0" prefHeight="25.0" prefWidth="327.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="29.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City" />
+                        <Text layoutX="206.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zipcode" />
+                        <Text layoutX="28.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" />
+                        <TextField fx:id="city" layoutX="27.0" layoutY="190.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <TextField fx:id="state" layoutX="27.0" layoutY="250.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <TextField fx:id="zipcode" layoutX="201.0" layoutY="186.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Button fx:id="savePersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
+                        <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Information">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="441.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Information">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="jobTitle" layoutX="629.0" layoutY="190.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
+                        <Text layoutX="632.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Title" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -52,16 +71,41 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="27.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" />
-                        <TextField layoutX="27.0" layoutY="52.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="28.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relation:" />
-                        <TextField layoutX="27.0" layoutY="109.0" prefHeight="28.0" prefWidth="152.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="220.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number:" />
-                        <TextField layoutX="220.0" layoutY="52.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="28.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
-                        <TextArea layoutX="28.0" layoutY="172.0" prefHeight="95.0" prefWidth="353.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Text layoutX="220.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone Numbe:r" />
-                        <TextField layoutX="220.0" layoutY="110.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="27.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
+                        <TextField fx:id="emergencyName" layoutX="27.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="28.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relation" />
+                        <TextField fx:id="relation" layoutX="27.0" layoutY="128.0" prefHeight="28.0" prefWidth="152.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="220.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
+                        <TextField fx:id="emergencyPhone" layoutX="220.0" layoutY="68.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="28.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+                        <TextArea fx:id="emergencyAddress" layoutX="28.0" layoutY="180.0" prefHeight="95.0" prefWidth="343.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="220.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone Number" />
+                        <TextField fx:id="emergencyWorkPhone" layoutX="220.0" layoutY="129.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Button fx:id="editPrimaryContact" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Primary Contact" textFill="WHITE" />
+                        <Button fx:id="savePrimaryContact" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
+                        <Line endX="-100.0" endY="409.0" layoutX="536.0" layoutY="11.0" startX="-100.0" stroke="#00308f" />
+                        <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Contact">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="483.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Secondary Contact">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="484.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
+                        <TextField fx:id="emergencyNameSec" layoutX="483.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Text layoutX="682.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
+                        <Text layoutX="482.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relation" />
+                        <Text layoutX="680.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone Number" />
+                        <Text layoutX="482.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+                        <TextField fx:id="emergencyPhoneSec" layoutX="680.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <TextField fx:id="emergencyRelationSec" layoutX="483.0" layoutY="129.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <TextField fx:id="emergencyWorkPhoneSec" layoutX="680.0" layoutY="129.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <TextArea fx:id="emergencyAddressSec" layoutX="482.0" layoutY="180.0" prefHeight="95.0" prefWidth="343.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
+                        <Button fx:id="editSecondaryContact" layoutX="484.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Secondary Contact" textFill="WHITE" />
+                        <Button fx:id="saveSecondaryContact" layoutX="483.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -69,15 +113,50 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="25.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Time" />
-                        <Text layoutX="23.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sick Time" />
-                        <Text layoutX="25.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sick Time Used YTD" />
-                        <Text layoutX="25.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Time Used YTD" />
-                        <TextField layoutX="25.0" layoutY="50.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <TextField layoutX="23.0" layoutY="168.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <TextField layoutX="23.0" layoutY="110.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <TextField layoutX="23.0" layoutY="227.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <Text layoutX="23.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Time" />
+                        <Text layoutX="23.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sick Time" />
+                        <Text layoutX="23.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sick Time Used YTD" />
+                        <Text layoutX="23.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Time Used YTD" />
+                        <TextField fx:id="vacationTime" layoutX="23.0" layoutY="69.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="sickTime" layoutX="22.0" layoutY="133.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="vacationTimeYTD" layoutX="23.0" layoutY="292.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="sickTimeYTD" layoutX="22.0" layoutY="227.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <Line endX="15.0" endY="392.5" layoutX="201.0" layoutY="27.0" startX="15.0" startY="-13.5" stroke="#002b94" />
+                        <Text layoutX="247.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Time off">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="requestTime" layoutX="248.0" layoutY="179.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <CheckBox layoutX="383.0" layoutY="246.0" mnemonicParsing="false" text="Sick Time" />
+                        <CheckBox layoutX="383.0" layoutY="220.0" mnemonicParsing="false" text="Vacation Time" />
+                        <Text layoutX="247.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date" />
+                        <Text layoutX="248.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date" />
+                        <Text layoutX="246.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time" />
+                        <TextField fx:id="requestTime1" layoutX="380.0" layoutY="179.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <Text layoutX="384.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time" />
+                        <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Balances">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="23.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Used ">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="requestDate11" layoutX="246.0" layoutY="296.0" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <Text layoutX="246.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reason" />
+                        <Line endX="15.0" endY="392.5" layoutX="517.0" layoutY="23.0" startX="15.0" startY="-13.5" stroke="#002b94" />
+                        <Text layoutX="569.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time off Approval Notification">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                        <DatePicker fx:id="requestStartDate" layoutX="246.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <DatePicker fx:id="requestEndDate" layoutX="246.0" layoutY="121.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <Button fx:id="editPersonalInfo11" layoutX="247.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Submit Request" textFill="WHITE" />
+                        <Pane fx:id="approvalNotifications" layoutX="569.0" layoutY="68.0" prefHeight="303.0" prefWidth="317.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                      </children></AnchorPane>
               </content>
             </Tab>
@@ -87,15 +166,29 @@
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
+                     <children>
+                        <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Schedule">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="Alerts">
+            <Tab text="BOLO Alerts">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <cursor>
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
+                     <children>
+                        <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Be On a Look Out ">
+                           <font>
+                              <Font name="Arial Black" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
                   </AnchorPane>
                </content>
             </Tab>
