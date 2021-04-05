@@ -8,11 +8,11 @@ com/application/launchApp.java
  com.application.launchApp
 com/application/databaseOps/supervisorIO.java
  com.application.databaseOps.supervisorIO
-com/application/initialstageLogin.java
- com.application.initialstageLogin
+com/application/gui/supervisorModeStage.java
+ com.application.gui.supervisorModeStage
 com/application/databaseOps/employeeIO.java
  com.application.databaseOps.employeeIO
 com/application/gui/loginStage.java
  com.application.gui.loginStage
-com/application/gui/supervisorModeStage.java
- com.application.gui.supervisorModeStage
+com/application/initialstageLogin.java
+ com.application.initialstageLogin

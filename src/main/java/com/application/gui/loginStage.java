@@ -30,6 +30,7 @@ public class loginStage {
             //activeUser.setPassword(passwordField.getText());
             //activeUser.setEmailAddress(usernameField.getText());
             //activeUser.connectDatabase();
+
             FXMLLoader mainStageLoader = new FXMLLoader(getClass().getResource("/stages/parentStage.fxml"));
             Parent root = mainStageLoader.load();
             mainStage = mainStageLoader.getController();
