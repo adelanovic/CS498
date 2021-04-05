@@ -1,0 +1,15 @@
+#mainHeader{
+    -fx-font-family: "Baskerville Old Face";
+    -fx-font-weight: bold;
+    -fx-font-size: 30px;
+}
+
+#schedulePane{
+    -fx-background-color: white;
+}
+
+#menuBar{
+    -fx-background-color: #003087;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}
