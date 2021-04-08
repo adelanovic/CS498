@@ -1,6 +1,7 @@
 package com.application.gui;
 
 import com.application.connection.mongodbStream;
+import com.application.databaseOps.employeeIO;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,8 @@ public class loginStage {
     public TextField usernameField;
     public static mongodbStream activeUser = new mongodbStream();
     public static parentmainStage mainStage;
+    public static regemployeeStage regEmp;
+
 
 
     @FXML
@@ -36,7 +39,7 @@ public class loginStage {
             mainStage = mainStageLoader.getController();
             loginBtn.getScene().setRoot(root);
 
-            if(supervisorMode.isSelected()) {
+            if(supervisorMode.isSelected() && employeeIO.getisSupervisor()) {
                 mainStage.viewsLoader = new FXMLLoader(getClass().getResource("/stages/supervisorMode.fxml"));
                 Parent supervisorRoot = mainStage.viewsLoader.load();
                 mainStage.supervisorMode = mainStage.viewsLoader.getController();
@@ -47,6 +50,7 @@ public class loginStage {
                 Parent employeesRoot = mainStage.viewsLoader.load();
                 mainStage.regEmployees = mainStage.viewsLoader.getController();
                 mainStage.mainView.getChildren().setAll(employeesRoot);
+                mainStage.regEmployees.setValues();
             }
 
 

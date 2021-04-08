@@ -119,8 +119,8 @@
                         <Text layoutX="23.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacation Time Used YTD" />
                         <TextField fx:id="vacationTime" layoutX="23.0" layoutY="69.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <TextField fx:id="sickTime" layoutX="22.0" layoutY="133.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <TextField fx:id="vacationTimeYTD" layoutX="23.0" layoutY="292.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <TextField fx:id="sickTimeYTD" layoutX="22.0" layoutY="227.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="sickTimeYTD" layoutX="23.0" layoutY="292.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="vacationTimeYTD" layoutX="22.0" layoutY="227.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <Line endX="15.0" endY="392.5" layoutX="201.0" layoutY="27.0" startX="15.0" startY="-13.5" stroke="#002b94" />
                         <Text layoutX="247.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Time off">
                            <font>
