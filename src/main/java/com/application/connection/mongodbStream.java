@@ -19,6 +19,7 @@ import com.mongodb.client.MongoCollection;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 import java.util.logging.Level;
 
 
@@ -46,14 +47,9 @@ public class mongodbStream
 
         try
         {
-            //Create a connection string
-           //ConnectionString connectString = new ConnectionString(
-                   // "mongodb://" + encodeValue(getUsername()) + ":" + getPassword() + "@realm.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=securityforces-fjzcg:mongodb-atlas:local-userpass");
-
-
-            ConnectionString connectString = new ConnectionString("mongodb+srv://delanoa:capstone@test.8i0hk.mongodb.net/TestDB?retryWrites=true&w=majority");
-
-
+           // Create a connection string
+           ConnectionString connectString = new ConnectionString(
+            "mongodb://" + encodeValue(getUsername()) + ":" + getPassword() +  "@realm.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=securityforces-otexj:mongodb-atlas:local-userpass");
 
             //Set the settings for the connection
             MongoClientSettings settings = MongoClientSettings.builder()
@@ -64,15 +60,14 @@ public class mongodbStream
             //Create the connection
             mongo_client = MongoClients.create(settings);
             System.out.println("Connected");
-            database = mongo_client.getDatabase("TestDB");
-            MongoCollection<Document> collection = database.getCollection("Testing");
+            database = mongo_client.getDatabase("SecurityForcesCollection");
+            MongoCollection<Document> collection = database.getCollection("Members");
 
-            // Retrieving the documents
             FindIterable<Document> iterDoc = collection.find();
-            for (Document document : iterDoc) {
-                System.out.println(document);
+            Iterator it = iterDoc.iterator();
+            while (it.hasNext()) {
+                System.out.println(it.next());
             }
-
 
         }
         catch(Exception e)
@@ -143,6 +138,7 @@ public class mongodbStream
         return this.username;
     }
 
+    //Realm requires an Encoded email due to @ symbol.
     private String encodeValue(String value) {
         try {
             return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());

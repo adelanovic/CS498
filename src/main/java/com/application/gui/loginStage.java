@@ -27,9 +27,9 @@ public class loginStage {
     @FXML
     private void loginClicked(Event e) {
         try {
-            //activeUser.setPassword(passwordField.getText());
-            //activeUser.setEmailAddress(usernameField.getText());
-            //activeUser.connectDatabase();
+            activeUser.setPassword(passwordField.getText());
+            activeUser.setEmailAddress(usernameField.getText());
+            activeUser.connectDatabase();
 
             FXMLLoader mainStageLoader = new FXMLLoader(getClass().getResource("/stages/parentStage.fxml"));
             Parent root = mainStageLoader.load();
