@@ -23,9 +23,6 @@ public class loginStage {
     public TextField usernameField;
     public static mongodbStream activeUser = new mongodbStream();
     public static parentmainStage mainStage;
-    public static regemployeeStage regEmp;
-
-
 
     @FXML
     private void loginClicked(Event e) {

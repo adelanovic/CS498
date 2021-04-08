@@ -1,6 +1,5 @@
 package com.application.gui;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +14,11 @@ public class parentmainStage {
     @FXML public AnchorPane menuBarAnchorPane;
 
     public void accountMenuBtnClicked(ActionEvent actionEvent) {
+
     }
 
     public void navigationMenuBtnClicked(ActionEvent actionEvent) {
+
     }
 
     public void myModelsBtnClicked(ActionEvent actionEvent) {
