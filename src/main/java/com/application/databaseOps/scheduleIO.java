@@ -3,6 +3,7 @@ package com.application.databaseOps;
 import com.application.connection.mongodbStream;
 import com.application.gui.loginStage;
 import com.mongodb.client.MongoCollection;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -19,7 +20,7 @@ public class scheduleIO {
     }
 
     public static void getSchedule(){
-        String textStyle = "-fx-text-color: red; -fx-font-size: 16px;";
+        String textStyle = "-fx-font-size: 16px;";
         Text date = new Text();
         Text postMonday = new Text();
         Text postTuesday = new Text();
@@ -30,12 +31,20 @@ public class scheduleIO {
         Text postSunday = new Text();
 
         postMonday.setStyle(textStyle);
+        postMonday.setFill(Color.WHITE);
+        postFriday.setFill(Color.WHITE);
         postFriday.setStyle(textStyle);
         postSaturday.setStyle(textStyle);
+        postSaturday.setFill(Color.WHITE);
         postTuesday.setStyle(textStyle);
+        postTuesday.setFill(Color.WHITE);
         postWednesday.setStyle(textStyle);
+        postWednesday.setFill(Color.WHITE);
         postThursday.setStyle(textStyle);
+        postThursday.setFill(Color.WHITE);
         postSunday.setStyle(textStyle);
+        postSunday.setFill(Color.WHITE);
+        date.setFill(Color.WHITE);
         date.setStyle(textStyle);
 
         postMonday.setText(getPostMonday());
