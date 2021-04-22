@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
@@ -67,6 +68,7 @@ public class regemployeeStage {
     @FXML public CheckBox vacationTimeChecked;
     @FXML public TextField requestEndTime;
     @FXML public GridPane scheduleGridPane;
+    @FXML public Text timeapprovalNotification;
 
 
     //Sets up all the initial values on regular employee stage load
@@ -263,7 +265,7 @@ public class regemployeeStage {
         employeeIO.setSecEmergencyAddress(newAddress);
         employeeIO.setSecEmergencyWorkPhone(newWorkPhone);
 
-        String monday = scheduleIO.getPostMonday();
+        String monday = requestsIO.getRequestStart();
         System.out.println(monday);
 
     }
@@ -291,5 +293,9 @@ public class regemployeeStage {
 
     public void getScheduleForEmployee(Event event) {
         scheduleIO.getSchedule();
+    }
+
+    public void getTimeApproval(Event event) {
+        requestsIO.getAllRequests();
     }
 }
