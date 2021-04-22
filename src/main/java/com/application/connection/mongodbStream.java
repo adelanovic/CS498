@@ -63,12 +63,6 @@ public class mongodbStream
             database = mongo_client.getDatabase("SecurityForcesCollection");
             MongoCollection<Document> collection = database.getCollection("Members");
 
-            FindIterable<Document> iterDoc = collection.find();
-            Iterator it = iterDoc.iterator();
-            while (it.hasNext()) {
-                System.out.println(it.next());
-            }
-
         }
         catch(Exception e)
         {

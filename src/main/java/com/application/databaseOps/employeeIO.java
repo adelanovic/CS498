@@ -6,7 +6,6 @@ import com.mongodb.client.MongoCollection;
 import org.bson.BsonArray;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-
 import java.util.Objects;
 
 import static com.mongodb.client.model.Filters.eq;
@@ -18,6 +17,11 @@ public class employeeIO {
     public static String getUserId() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("user_id");
+    }
+
+    public static String getSupervisorId() {
+        Bson filter = eq("email_address", loginStage.activeUser.getUsername());
+        return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("supervisor_id");
     }
 
     public static Boolean getisSupervisor() {
@@ -168,5 +172,229 @@ public class employeeIO {
     public static String getSickTimeUsed() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("sick_time_used");
+    }
+
+    //Setter Methods
+    public static void setFirstName(String firstName){
+        Document find = employeesCollection.find(new Document("first_name", getFirstName())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("first_name", firstName);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setLastName(String lastName){
+        Document find = employeesCollection.find(new Document("last_name", getLastName())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("last_name", lastName);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setAddress(String address){
+        Document find = employeesCollection.find(new Document("address", getAddress())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("address", address);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void setZipcode(String zipcode){
+        Document find = employeesCollection.find(new Document("zipcode", getZipcode())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("zipcode", zipcode);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void setCity(String city){
+        Document find = employeesCollection.find(new Document("city", getCity())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("city", city);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void setState(String state){
+        Document find = employeesCollection.find(new Document("state", getState())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("state", state);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //Primary Contact
+    public static void setEmergencyName(String newEmergencyName) {
+        Document find = employeesCollection.find(new Document("primary_contact", getPrimaryContact())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("primary_contact", newEmergencyName);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setEmergencyPhone(String newEmergencyPhone) {
+        Document find = employeesCollection.find(new Document("primary_phone", getPrimaryPhone())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("primary_phone", newEmergencyPhone);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setEmergencyRelation(String newRelation) {
+        Document find = employeesCollection.find(new Document("primary_relation", getPrimaryRelation())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("primary_relation", newRelation);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setEmergencyAddress(String newAddress) {
+        Document find = employeesCollection.find(new Document("primary_address", getPrimaryAddress())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("primary_address", newAddress);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setEmergencyWorkPhone(String newWorkPhone) {
+        Document find = employeesCollection.find(new Document("primary_work_phone", getPrimaryWorkPhone())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("primary_work_phone", newWorkPhone);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //Secondary Contact
+    public static void setSecEmergencyName(String newEmergencyName) {
+        Document find = employeesCollection.find(new Document("secondary_name", getSecondaryContact())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("secondary_name", newEmergencyName);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setSecEmergencyPhone(String newEmergencyPhone) {
+        Document find = employeesCollection.find(new Document("secondary_phone_number", getSecondaryPhone())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("secondary_phone_number", newEmergencyPhone);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setSecEmergencyRelation(String newRelation) {
+        Document find = employeesCollection.find(new Document("secondary_relation", getSecondaryRelation())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("secondary_relation", newRelation);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setSecEmergencyAddress(String newAddress) {
+        Document find = employeesCollection.find(new Document("secondary_address", getSecondaryAddress())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("secondary_address", newAddress);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void setSecEmergencyWorkPhone(String newWorkPhone) {
+        Document find = employeesCollection.find(new Document("secondary_work_phone", getSecondaryWorkPhone())).first();
+
+        try {
+            if (find != null) {
+                Bson newValue = new Document("secondary_work_phone", newWorkPhone);
+                Bson operation = new Document("$set", newValue);
+                employeesCollection.updateOne(find, operation);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

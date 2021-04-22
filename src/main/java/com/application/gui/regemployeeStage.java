@@ -1,14 +1,21 @@
 package com.application.gui;
 
-
 import com.application.databaseOps.employeeIO;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import com.application.databaseOps.requestsIO;
+import com.application.databaseOps.scheduleIO;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
+
+import java.time.format.DateTimeFormatter;
 
 public class regemployeeStage {
     @FXML public AnchorPane mainDashboard;
@@ -46,13 +53,21 @@ public class regemployeeStage {
     @FXML public TextField sickTime;
     @FXML public TextField vacationTimeYTD;
     @FXML public TextField sickTimeYTD;
-    @FXML public TextField requestTime;
-    @FXML public TextField requestTime1;
-    @FXML public TextField requestDate11;
     @FXML public DatePicker requestStartDate;
     @FXML public DatePicker requestEndDate;
-    @FXML public Button editPersonalInfo11;
     @FXML public Pane approvalNotifications;
+    @FXML public ScrollPane resourceScrollPane;
+    @FXML public WebView resourceWebView;
+    @FXML public WebView bolowebView;
+    public WebEngine webEngine;
+    @FXML public Button submitRequest;
+    @FXML public TextField requestReason;
+    @FXML public TextField requestStartTime;
+    @FXML public CheckBox sickTimeChecked;
+    @FXML public CheckBox vacationTimeChecked;
+    @FXML public TextField requestEndTime;
+    @FXML public GridPane scheduleGridPane;
+
 
     //Sets up all the initial values on regular employee stage load
     @FXML
@@ -119,5 +134,162 @@ public class regemployeeStage {
         sickTimeYTD.setEditable(false);
         sickTime.setText(employeeIO.getSickTime());
         sickTime.setEditable(false);
+    }
+
+    public void displayResourcesRegular(Event event) {
+        webEngine = resourceWebView.getEngine();
+        webEngine.load("https://www.afsfc.af.mil/");
+
+        //Error Check loading
+        webEngine.getLoadWorker().exceptionProperty().addListener(new ChangeListener<Throwable>() {
+            @Override
+            public void changed(ObservableValue<? extends Throwable> observable, Throwable oldValue, Throwable newValue) {
+                System.out.println("Error Occured!");
+            }
+        });
+    }
+
+    public void displayBoloPage(Event event) {
+        webEngine = bolowebView.getEngine();
+        webEngine.load("https://www.fbi.gov/wanted/topten");
+
+        //Error Check loading
+        webEngine.getLoadWorker().exceptionProperty().addListener(new ChangeListener<Throwable>() {
+            @Override
+            public void changed(ObservableValue<? extends Throwable> observable, Throwable oldValue, Throwable newValue) {
+                System.out.println("Error Occured!");
+            }
+        });
+    }
+
+    public void editPersonalInfoClicked(ActionEvent actionEvent) {
+        savePersonalInfo.setVisible(true);
+        editPersonalInfo.setVisible(false);
+        firstName.setEditable(true);
+        lastName.setEditable(true);
+        streetAddress.setEditable(true);
+        city.setEditable(true);
+        zipcode.setEditable(true);
+        state.setEditable(true);
+
+    }
+
+    public void savePersonalInfoClicked(ActionEvent actionEvent) {
+        savePersonalInfo.setVisible(false);
+        editPersonalInfo.setVisible(true);
+        firstName.setEditable(false);
+        lastName.setEditable(false);
+        streetAddress.setEditable(false);
+        city.setEditable(false);
+        zipcode.setEditable(false);
+        state.setEditable(false);
+
+        String newFname = firstName.getText();
+        String newLname = lastName.getText();
+        String newAddress = streetAddress.getText();
+        String newCity = city.getText();
+        String newZipcode = zipcode.getText();
+        String newState = state.getText();
+
+        employeeIO.setFirstName(newFname);
+        employeeIO.setLastName(newLname);
+        employeeIO.setAddress(newAddress);
+        employeeIO.setCity(newCity);
+        employeeIO.setState(newState);
+        employeeIO.setZipcode(newZipcode);
+
+    }
+
+    public void editPrimaryContactClicked(ActionEvent actionEvent) {
+        emergencyName.setEditable(true);
+        emergencyPhone.setEditable(true);
+        relation.setEditable(true);
+        emergencyWorkPhone.setEditable(true);
+        emergencyAddress.setEditable(true);
+        editPrimaryContact.setVisible(false);
+        savePrimaryContact.setVisible(true);
+    }
+
+    public void savePrimaryContactClicked(ActionEvent actionEvent) {
+        emergencyName.setEditable(false);
+        emergencyPhone.setEditable(false);
+        relation.setEditable(false);
+        emergencyWorkPhone.setEditable(false);
+        emergencyAddress.setEditable(false);
+        editPrimaryContact.setVisible(true);
+        savePrimaryContact.setVisible(false);
+
+        String newEmergencyName = emergencyName.getText();
+        String newEmergencyPhone = emergencyPhone.getText();
+        String newRelation = relation.getText();
+        String newAddress = emergencyAddress.getText();
+        String newWorkPhone = emergencyWorkPhone.getText();
+
+        employeeIO.setEmergencyName(newEmergencyName);
+        employeeIO.setEmergencyPhone(newEmergencyPhone);
+        employeeIO.setEmergencyRelation(newRelation);
+        employeeIO.setEmergencyAddress(newAddress);
+        employeeIO.setEmergencyWorkPhone(newWorkPhone);
+    }
+
+    public void editSecondaryContactClicked(ActionEvent actionEvent) {
+        emergencyNameSec.setEditable(true);
+        emergencyPhoneSec.setEditable(true);
+        emergencyRelationSec.setEditable(true);
+        emergencyWorkPhoneSec.setEditable(true);
+        emergencyAddressSec.setEditable(true);
+        editSecondaryContact.setVisible(false);
+        saveSecondaryContact.setVisible(true);
+    }
+
+    public void saveSecondaryContactClicked(ActionEvent actionEvent) {
+        emergencyNameSec.setEditable(false);
+        emergencyPhoneSec.setEditable(false);
+        emergencyRelationSec.setEditable(false);
+        emergencyWorkPhoneSec.setEditable(false);
+        emergencyAddressSec.setEditable(false);
+        editSecondaryContact.setVisible(true);
+        saveSecondaryContact.setVisible(false);
+
+        String newEmergencyName = emergencyNameSec.getText();
+        String newEmergencyPhone = emergencyPhoneSec.getText();
+        String newRelation = emergencyRelationSec.getText();
+        String newAddress = emergencyAddressSec.getText();
+        String newWorkPhone = emergencyWorkPhoneSec.getText();
+
+        employeeIO.setSecEmergencyName(newEmergencyName);
+        employeeIO.setSecEmergencyPhone(newEmergencyPhone);
+        employeeIO.setSecEmergencyRelation(newRelation);
+        employeeIO.setSecEmergencyAddress(newAddress);
+        employeeIO.setSecEmergencyWorkPhone(newWorkPhone);
+
+        String monday = scheduleIO.getPostMonday();
+        System.out.println(monday);
+
+    }
+
+    public void submitRequestClicked(ActionEvent actionEvent) {
+
+        String requestStart = requestStartDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String requestEnd = requestEndDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String typeRequest;
+        String startTime = requestStartTime.getText();
+        String endTime = requestEndTime.getText();
+        String reason = requestReason.getText();
+
+        if(vacationTimeChecked.isSelected()){
+            typeRequest = "Vacation";
+        }else if(sickTimeChecked.isSelected()){
+            typeRequest = "Sick";
+        }else{
+            typeRequest = "Unknown";
+        }
+
+        requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
+
+    }
+
+    public void getScheduleForEmployee(Event event) {
+        scheduleIO.getSchedule();
     }
 }

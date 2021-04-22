@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -11,10 +12,14 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane fx:id="mainDashboard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: #003087; -fx-border-radius: 3;" stylesheets="@../styles/regularEmployeeStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.regemployeeStage">
    <children>
@@ -25,7 +30,7 @@
               <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="919.0">
                      <children>
                         <TextField fx:id="firstName" layoutX="27.0" layoutY="75.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
-                        <Button fx:id="editPersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Contact Information" textFill="WHITE" />
+                        <Button fx:id="editPersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#editPersonalInfoClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Contact Information" textFill="WHITE" />
                         <Text layoutX="28.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
                         <Text layoutX="202.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
                         <TextField fx:id="lastName" layoutX="201.0" layoutY="77.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
@@ -51,7 +56,7 @@
                         <TextField fx:id="city" layoutX="27.0" layoutY="190.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
                         <TextField fx:id="state" layoutX="27.0" layoutY="250.0" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
                         <TextField fx:id="zipcode" layoutX="201.0" layoutY="186.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Button fx:id="savePersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
+                        <Button fx:id="savePersonalInfo" layoutX="26.0" layoutY="307.0" mnemonicParsing="false" onAction="#savePersonalInfoClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
                         <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Information">
                            <font>
                               <Font name="Arial Black" size="13.0" />
@@ -81,8 +86,8 @@
                         <TextArea fx:id="emergencyAddress" layoutX="28.0" layoutY="180.0" prefHeight="95.0" prefWidth="343.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
                         <Text layoutX="220.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone Number" />
                         <TextField fx:id="emergencyWorkPhone" layoutX="220.0" layoutY="129.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Button fx:id="editPrimaryContact" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Primary Contact" textFill="WHITE" />
-                        <Button fx:id="savePrimaryContact" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
+                        <Button fx:id="editPrimaryContact" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" onAction="#editPrimaryContactClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Primary Contact" textFill="WHITE" />
+                        <Button fx:id="savePrimaryContact" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" onAction="#savePrimaryContactClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
                         <Line endX="-100.0" endY="409.0" layoutX="536.0" layoutY="11.0" startX="-100.0" stroke="#00308f" />
                         <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primary Contact">
                            <font>
@@ -104,8 +109,8 @@
                         <TextField fx:id="emergencyRelationSec" layoutX="483.0" layoutY="129.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
                         <TextField fx:id="emergencyWorkPhoneSec" layoutX="680.0" layoutY="129.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
                         <TextArea fx:id="emergencyAddressSec" layoutX="482.0" layoutY="180.0" prefHeight="95.0" prefWidth="343.0" style="-fx-background-color: ffffff; -fx-border-color: #00308f;" />
-                        <Button fx:id="editSecondaryContact" layoutX="484.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Secondary Contact" textFill="WHITE" />
-                        <Button fx:id="saveSecondaryContact" layoutX="483.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
+                        <Button fx:id="editSecondaryContact" layoutX="484.0" layoutY="286.0" mnemonicParsing="false" onAction="#editSecondaryContactClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Edit Secondary Contact" textFill="WHITE" />
+                        <Button fx:id="saveSecondaryContact" layoutX="483.0" layoutY="286.0" mnemonicParsing="false" onAction="#saveSecondaryContactClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Save" textFill="WHITE" visible="false" />
                      </children></AnchorPane>
             </content>
           </Tab>
@@ -127,13 +132,13 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="requestTime" layoutX="248.0" layoutY="179.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <CheckBox layoutX="383.0" layoutY="246.0" mnemonicParsing="false" text="Sick Time" />
-                        <CheckBox layoutX="383.0" layoutY="220.0" mnemonicParsing="false" text="Vacation Time" />
+                        <TextField fx:id="requestStartTime" layoutX="248.0" layoutY="179.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <CheckBox fx:id="sickTimeChecked" layoutX="383.0" layoutY="246.0" mnemonicParsing="false" text="Sick Time" />
+                        <CheckBox fx:id="vacationTimeChecked" layoutX="383.0" layoutY="220.0" mnemonicParsing="false" text="Vacation Time" />
                         <Text layoutX="247.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date" />
                         <Text layoutX="248.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date" />
                         <Text layoutX="246.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time" />
-                        <TextField fx:id="requestTime1" layoutX="380.0" layoutY="179.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="requestEndTime" layoutX="380.0" layoutY="179.0" prefHeight="25.0" prefWidth="108.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <Text layoutX="384.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time" />
                         <Text layoutX="22.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Balances">
                            <font>
@@ -145,7 +150,7 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="requestDate11" layoutX="246.0" layoutY="296.0" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
+                        <TextField fx:id="requestReason" layoutX="246.0" layoutY="296.0" prefHeight="31.0" prefWidth="250.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <Text layoutX="246.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reason" />
                         <Line endX="15.0" endY="392.5" layoutX="517.0" layoutY="23.0" startX="15.0" startY="-13.5" stroke="#002b94" />
                         <Text layoutX="569.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time off Approval Notification">
@@ -155,12 +160,12 @@
                         </Text>
                         <DatePicker fx:id="requestStartDate" layoutX="246.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <DatePicker fx:id="requestEndDate" layoutX="246.0" layoutY="121.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
-                        <Button fx:id="editPersonalInfo11" layoutX="247.0" layoutY="343.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Submit Request" textFill="WHITE" />
+                        <Button fx:id="submitRequest" layoutX="247.0" layoutY="343.0" mnemonicParsing="false" onAction="#submitRequestClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Submit Request" textFill="WHITE" />
                         <Pane fx:id="approvalNotifications" layoutX="569.0" layoutY="68.0" prefHeight="303.0" prefWidth="317.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab text="Scheduled Posts">
+            <Tab fx:id="schedulePane" onSelectionChanged="#getScheduleForEmployee" text="Scheduled Posts">
               <content>
                 <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <cursor>
@@ -172,11 +177,84 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Text>
+                        <Pane fx:id="currentSchedulePane" layoutY="41.0" prefHeight="390.0" prefWidth="919.0">
+                           <children>
+                              <GridPane fx:id="scheduleGridPane" layoutX="24.0" layoutY="37.0" prefHeight="90.0" prefWidth="885.0" style="-fx-background-color: #003087; -fx-background-radius: 5 5 5 5; -fx-border-color: black; -fx-border-radius: 5;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Wednesday" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Sunday" GridPane.columnIndex="7" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Day:" textAlignment="CENTER" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Post:" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Range:">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </Pane>
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-            <Tab text="BOLO Alerts">
+            <Tab fx:id="boloSelected" onSelectionChanged="#displayBoloPage" text="BOLO Alerts">
                <content>
                   <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <cursor>
@@ -188,11 +266,16 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Text>
+                        <ScrollPane fx:id="boloscrollPane" prefHeight="427.0" prefWidth="919.0">
+                           <content>
+                              <WebView fx:id="bolowebView" prefHeight="417.0" prefWidth="919.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab text="Resources">
+            <Tab fx:id="resourcesPane" onSelectionChanged="#displayResourcesRegular" text="Resources">
                <content>
                   <AnchorPane id="personalInfo" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <cursor>
@@ -204,6 +287,11 @@
                               <Font name="Arial Black" size="13.0" />
                            </font>
                         </Text>
+                        <ScrollPane fx:id="resourceScrollPane" layoutY="2.0" prefHeight="427.0" prefWidth="919.0">
+                           <content>
+                              <WebView fx:id="resourceWebView" prefHeight="417.0" prefWidth="919.0" />
+                           </content>
+                        </ScrollPane>
                      </children>
                   </AnchorPane>
                </content>
