@@ -14,6 +14,16 @@ import java.util.function.Consumer;
 
 import static com.mongodb.client.model.Filters.eq;
 
+/**
+ * Defines the Employee request operations for requesting time off.
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
+
 public class requestsIO {
     public static MongoCollection<Document> requestsCollection = mongodbStream.database.getCollection("TimeOffRequests");
     public static ArrayList<requestResponse> requests = new ArrayList<>();
