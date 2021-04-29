@@ -12,6 +12,17 @@ import java.util.Objects;
 
 import static com.mongodb.client.model.Filters.eq;
 
+
+/**
+ * Defines the operations required to get the current schedule of the employee.
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
+
 public class scheduleIO {
     public static MongoCollection<Document> scheduleCollection = mongodbStream.database.getCollection("Schedule");
 
