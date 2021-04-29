@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
 
 <AnchorPane fx:id="supervisorMainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="919.0" style="-fx-background-color: #003087;" stylesheets="@../styles/supervisorModeStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.supervisorModeStage">
    <children>
@@ -40,6 +42,20 @@
             <Image url="@../images/defensor-fortis.png" />
          </image>
       </ImageView>
-      <Pane id="schedulePane" layoutX="-5.0" layoutY="226.0" prefHeight="425.0" prefWidth="924.0" />
+      <Pane id="schedulePane" layoutX="-5.0" layoutY="226.0" prefHeight="425.0" prefWidth="924.0">
+         <children>
+            <AnchorPane fx:id="resourcesMainPane" prefHeight="425.0" prefWidth="919.0" visible="false">
+               <children>
+                  <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="405.0" prefWidth="902.0">
+                     <content>
+                        <WebView fx:id="supervisorWebView" prefHeight="400.0" prefWidth="897.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="passdownsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
+            <AnchorPane fx:id="requestsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
+            <AnchorPane fx:id="schedulingAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
+         </children></Pane>
    </children>
 </AnchorPane>
