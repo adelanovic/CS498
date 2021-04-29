@@ -35,7 +35,12 @@ public class loginStage {
     public TextField usernameField;
     public static mongodbStream activeUser = new mongodbStream();
     public static parentmainStage mainStage;
-
+    
+/**
+ * Handles all login requests after the login button was clicked. Loads the appropriate errors or *.fxml stages.
+ * @param none
+ * @return none
+ */
     @FXML
     private void loginClicked()  {
         try {
@@ -97,11 +102,21 @@ public class loginStage {
             alert.setContentText("A restart of the application is required. An error unexpected error occurred!");
         }
     }
-
+    
+/**
+ * Exits the application and disconnects from the database cleaning up any active threads..
+ * @param none
+ * @return none
+ */  
     public void exitClicked(ActionEvent actionEvent) {
         Platform.exit();
     }
 
+/**
+ * Toggles the show password checkbox. The user is shown the password as either masked with '*' or plain text.
+ * @param none
+ * @return none
+ */      
     public void toggleShowPassword(ActionEvent actionEvent) {
         if (showPasswordChecked.isSelected()) {
             passwordPlainText.setText(passwordField.getText());
