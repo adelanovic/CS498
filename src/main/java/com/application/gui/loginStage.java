@@ -14,8 +14,15 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-/* This class is responsible for logging into the Database */
-
+/**
+ * Controller class for the login.fxml page. Controls all login procedures.
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
 public class loginStage {
     @FXML public AnchorPane loginPane;
     @FXML public PasswordField passwordField;
