@@ -9,6 +9,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
+
+/**
+ * Controller for all operations on the supervisor stage. All updates, deletes and error handling
+ * for a supervisor that is logged in are controlled by this class.
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
 public class supervisorModeStage {
     @FXML public Button resourcesBtn;
     @FXML public Button passdownsBtn;
