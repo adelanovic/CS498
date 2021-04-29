@@ -15,7 +15,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-
 import java.time.format.DateTimeFormatter;
 
 public class regemployeeStage {
@@ -69,6 +68,13 @@ public class regemployeeStage {
     @FXML public TextField requestEndTime;
     @FXML public GridPane scheduleGridPane;
     @FXML public Text timeapprovalNotification;
+    @FXML public Tab schedulePane;
+    @FXML public Button closeErrorField;
+    @FXML public AnchorPane requestErrorPane;
+    @FXML public Text errorTexTField;
+    @FXML public AnchorPane requestSuccessPane;
+    @FXML public Text requestSuccessField;
+    @FXML public Button requestSuccessBtn;
 
 
     //Sets up all the initial values on regular employee stage load
@@ -95,6 +101,7 @@ public class regemployeeStage {
         hireDate.setEditable(false);
         jobTitle.setText(employeeIO.getJobTitle());
         jobTitle.setEditable(false);
+
         //certifications.setText(employeeIO.getCertifications().toString());
         nextEvaluation.setText(employeeIO.getNextEval());
         nextEvaluation.setEditable(false);
@@ -136,6 +143,11 @@ public class regemployeeStage {
         sickTimeYTD.setEditable(false);
         sickTime.setText(employeeIO.getSickTime());
         sickTime.setEditable(false);
+
+        if(employeeIO.getisSupervisor()){
+            schedulePane.setDisable(true);
+        }
+
     }
 
     public void displayResourcesRegular(Event event) {
@@ -272,22 +284,40 @@ public class regemployeeStage {
 
     public void submitRequestClicked(ActionEvent actionEvent) {
 
-        String requestStart = requestStartDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String requestEnd = requestEndDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        String typeRequest;
-        String startTime = requestStartTime.getText();
-        String endTime = requestEndTime.getText();
-        String reason = requestReason.getText();
+        try {
+            String requestStart = requestStartDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            String requestEnd = requestEndDate.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            String typeRequest;
+            String startTime = requestStartTime.getText();
+            String endTime = requestEndTime.getText();
+            String reason = requestReason.getText();
 
-        if(vacationTimeChecked.isSelected()){
-            typeRequest = "Vacation";
-        }else if(sickTimeChecked.isSelected()){
-            typeRequest = "Sick";
-        }else{
-            typeRequest = "Unknown";
+            if(vacationTimeChecked.isSelected() && !sickTimeChecked.isSelected()){
+                typeRequest = "Vacation";
+                requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
+                requestSuccessPane.setVisible(true);
+                requestSuccessField.setText("Your request was successfully submitted!");
+
+            }else if(sickTimeChecked.isSelected() && !vacationTimeChecked.isSelected()) {
+                typeRequest = "Sick";
+                requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
+                requestSuccessPane.setVisible(true);
+                requestSuccessField.setText("Your request was successfully submitted!");
+
+            }else if(sickTimeChecked.isSelected() && vacationTimeChecked.isSelected()){
+                requestErrorPane.setVisible(true);
+                errorTexTField.setText("You can't select both sick and vacation time!");
+            }else{
+                typeRequest = "Unknown";
+                requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
+                requestSuccessPane.setVisible(true);
+                requestSuccessField.setText("Your request was successfully submitted!");
+            }
+
+        }catch(Exception e){
+            requestErrorPane.setVisible(true);
+            errorTexTField.setText("Ensure all fields are properly filled out!");
         }
-
-        requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
 
     }
 
@@ -297,5 +327,24 @@ public class regemployeeStage {
 
     public void getTimeApproval(Event event) {
         requestsIO.getAllRequests();
+    }
+
+    public void closeErrorFieldClicked(ActionEvent actionEvent) {
+        requestErrorPane.setVisible(false);
+
+    }
+
+    public void requestBtnConfirmationClicked(ActionEvent actionEvent) {
+        requestSuccessPane.setVisible(false);
+        requestReason.setText("");
+        requestStartDate.getEditor().clear();
+        requestEndDate.getEditor().clear();
+        requestStartTime.setText("");
+        requestEndTime.setText("");
+
+        if(sickTimeChecked.isSelected() || vacationTimeChecked.isSelected()){
+            sickTimeChecked.setSelected(false);
+            vacationTimeChecked.setSelected(false);
+        }
     }
 }

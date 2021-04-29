@@ -9,30 +9,44 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="loginPane" fx:id="loginPane" cache="true" prefHeight="690.0" prefWidth="919.0" style="-fx-background-color: ffffff;" stylesheets="@../styles/loginStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.loginStage">
+<AnchorPane id="loginPane" fx:id="loginPane" cache="true" prefHeight="690.0" prefWidth="919.0" style="-fx-background-color: ffffff; -fx-border-color: black; -fx-border-width: 2px;" stylesheets="@../styles/loginStyle.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.application.gui.loginStage">
     <children>
       <Button fx:id="loginBtn" layoutX="658.0" layoutY="399.0" mnemonicParsing="false" onAction="#loginClicked" prefHeight="41.0" prefWidth="244.0" style="-fx-background-color: #003087;" text="Login" textFill="WHITE" />
-        <ImageView fitHeight="603.0" fitWidth="603.0" layoutX="30.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,2), 2,2,2,2);">
+        <ImageView fitHeight="603.0" fitWidth="603.0" layoutX="30.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(2,2,2,2), 2,2,2,2);">
             <image>
                 <Image url="@../images/login.jpg" />
             </image>
         </ImageView>
       <Text id="mainHeader" fill="WHITE" layoutX="169.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="U.S Air Force Security Forces Management System" textAlignment="CENTER" wrappingWidth="324.08984375" />
       <Button fx:id="exitBtn" layoutX="658.0" layoutY="450.0" mnemonicParsing="false" onAction="#exitClicked" prefHeight="41.0" prefWidth="244.0" style="-fx-background-color: #003087;" text="Exit" textFill="WHITE" />
-        <TextField id="usernameField" fx:id="usernameField" alignment="TOP_CENTER" blendMode="DARKEN" layoutX="658.0" layoutY="289.0" prefHeight="36.0" prefWidth="244.0" promptText="Username" snapToPixel="false">
+        <TextField id="usernameField" fx:id="usernameField" alignment="CENTER" blendMode="DARKEN" layoutX="658.0" layoutY="289.0" prefHeight="35.0" prefWidth="244.0" promptText="Username" snapToPixel="false" style="-fx-border-color: black; -fx-border-radius: 5px;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
          <opaqueInsets>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </opaqueInsets></TextField>
-        <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" cache="true" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="658.0" layoutY="332.0" prefHeight="35.0" prefWidth="244.0" promptText="Password" scaleShape="false">
+        <PasswordField id="passwordField" fx:id="passwordField" alignment="CENTER" cache="true" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="658.0" layoutY="332.0" prefHeight="35.0" prefWidth="244.0" promptText="Password" scaleShape="false" style="-fx-border-color: black; -fx-border-radius: 5px;">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor></PasswordField>
-      <CheckBox fx:id="supervisorMode" layoutX="658.0" layoutY="502.0" mnemonicParsing="false" text="Supervisor Mode" underline="true" />
-      <CheckBox layoutX="658.0" layoutY="537.0" mnemonicParsing="false" text="Show Password" />
+      <TextField id="usernameField" fx:id="passwordPlainText" alignment="CENTER" blendMode="DARKEN" layoutX="658.0" layoutY="332.0" prefHeight="35.0" prefWidth="244.0" promptText="Password" snapToPixel="false" style="-fx-border-color: black; -fx-border-radius: 5px;" visible="false">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </opaqueInsets>
+      </TextField>
+      <CheckBox fx:id="supervisorMode" layoutX="658.0" layoutY="502.0" mnemonicParsing="false" text="Supervisor Mode" textAlignment="CENTER" />
+      <CheckBox fx:id="showPasswordChecked" layoutX="658.0" layoutY="537.0" mnemonicParsing="false" onAction="#toggleShowPassword" text="Show Password" />
+      <Pane fx:id="loginErrorField" layoutX="196.0" layoutY="9.0" prefHeight="26.0" prefWidth="528.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-radius: 10px; -fx-border-width: 2; -fx-border-color: red;" visible="false">
+         <children>
+            <Text fx:id="errorReason" fill="RED" layoutX="87.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error Field" textAlignment="CENTER" wrappingWidth="362.13671875" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

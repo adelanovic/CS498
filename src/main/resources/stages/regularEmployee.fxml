@@ -183,6 +183,34 @@
                                  </children>
                               </GridPane>
                            </children></Pane>
+                        <AnchorPane fx:id="requestErrorPane" layoutX="223.0" layoutY="32.0" prefHeight="149.0" prefWidth="441.0" style="-fx-background-color: #E8E8E8; -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" visible="false">
+                           <children>
+                              <Pane layoutX="1.0" prefHeight="200.0" prefWidth="441.0">
+                                 <children>
+                                    <Text fx:id="errorTexTField" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error Field" textAlignment="CENTER" wrappingWidth="441.13671875">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="closeErrorField" layoutX="133.0" layoutY="146.0" mnemonicParsing="false" onAction="#closeErrorFieldClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: red;" text="Close" textFill="WHITE" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="requestSuccessPane" layoutX="233.0" layoutY="42.0" prefHeight="149.0" prefWidth="441.0" style="-fx-background-color: #E8E8E8; -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" visible="false">
+                           <children>
+                              <Pane layoutX="1.0" prefHeight="200.0" prefWidth="441.0">
+                                 <children>
+                                    <Text fx:id="requestSuccessField" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Success Field" textAlignment="CENTER" wrappingWidth="441.13671875">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="requestSuccessBtn" layoutX="133.0" layoutY="146.0" mnemonicParsing="false" onAction="#requestBtnConfirmationClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Close" textFill="WHITE" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
                      </children></AnchorPane>
               </content>
             </Tab>
