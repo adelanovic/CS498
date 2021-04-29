@@ -32,28 +32,48 @@ public class supervisorModeStage {
     @FXML public AnchorPane passdownsAnchor;
     @FXML public AnchorPane requestsAnchor;
     @FXML public AnchorPane schedulingAnchor;
-
+    
+/**
+ * Handles the stage if the display schedule button is clicked.
+ * @param none
+ * @return none
+ */  
     public void displaySchedulePane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(false);
         passdownsAnchor.setVisible(false);
         schedulingAnchor.setVisible(true);
         requestsAnchor.setVisible(false);
     }
-
+    
+/**
+ * Handles the stage if request time off button is clicked.
+ * @param none
+ * @return none
+ */  
     public void requestTimeOffPanee(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(false);
         passdownsAnchor.setVisible(false);
         schedulingAnchor.setVisible(false);
         requestsAnchor.setVisible(true);
     }
-
+    
+/**
+ * Handles the stage if the daily passdowns button is clicked.
+ * @param none
+ * @return none
+ */  
     public void displayDailyPassdownsPane(ActionEvent actionEvent) {
         passdownsAnchor.setVisible(true);
         resourcesMainPane.setVisible(false);
         schedulingAnchor.setVisible(false);
         requestsAnchor.setVisible(false);
     }
-
+    
+/**
+ * Handles the stage for the Resources Pane. Currently takes a supervisor to resources for forms and information.
+ * @param none
+ * @return none
+ */  
     public void displayResourcesPane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(true);
         passdownsAnchor.setVisible(false);
