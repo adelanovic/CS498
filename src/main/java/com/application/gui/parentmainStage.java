@@ -10,6 +10,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+/**
+ * Controller for the main and primary stage of the application after a successful login.
+ * All other stages are attached to it. This is the parent stage. 
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
+
 public class parentmainStage {
     public FXMLLoader viewsLoader;
     public regemployeeStage regEmployees;
