@@ -51,7 +51,6 @@ public class requestsIO {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     
 /**
@@ -74,7 +73,6 @@ public class requestsIO {
 
         requestsCollection.find(eq("user_id", employeeIO.getUserId()))
                 .forEach(printConsumer);
-
     }
     
 /**
