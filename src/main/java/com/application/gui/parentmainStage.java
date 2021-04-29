@@ -40,7 +40,11 @@ public class parentmainStage {
     @FXML
     public Button cancelBtn;
 
-
+/**
+ * Opens the main menu located in the top right hand corner. Closes if its already open.
+ * @param none
+ * @return none
+ */
     public void openExitMenu(MouseEvent mouseEvent) {
         if (!applicationPane.isVisible()) {
             applicationPane.setVisible(true);
@@ -48,11 +52,21 @@ public class parentmainStage {
             applicationPane.setVisible(false);
         }
     }
-
+    
+/**
+ * Exits the application, disconnects from the database and cleans up all residual threads.
+ * @param none
+ * @return none
+ */
     public void exitApplicationBtnClicked(ActionEvent actionEvent) {
         Platform.exit();
     }
-
+    
+/**
+ * Logs out of the application and displays the login stage again
+ * @param none
+ * @return none
+ */
     public void logOutBtnClicked(ActionEvent actionEvent) {
 
     }
