@@ -183,7 +183,7 @@ public class employeeIO {
     }
     
     /**
-     * Gets the jog title of the current logged in user.
+     * Gets the job title of the current logged in user.
      * @param none
      * @return String that contains the first name.
      */
@@ -191,83 +191,164 @@ public class employeeIO {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("job_title");
     }
-
+    
+    /**
+     * Gets the certifications of the current logged in user.
+     * @param none
+     * @return BsonArray that contains the certifications of the user.
+     */
     public static BsonArray getCertifications() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (BsonArray) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("certifications");
     }
-
+    
+    /**
+     * Gets the primary contact of the current logged in user.
+     * @param none
+     * @return String that contains the primary contact name of the user.
+     */
     public static String getPrimaryContact() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("primary_contact");
     }
-
+    
+    /**
+     * Gets the primary contact phone of the current logged in user.
+     * @param none
+     * @return String that contains the primary contact phone of the user.
+     */
     public static String getPrimaryPhone() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("primary_phone");
     }
-
+    
+    /**
+     * Gets the primary relation of the current logged in user.
+     * @param none
+     * @return String that contains the primary relation of the user.
+     */
     public static String getPrimaryRelation() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("primary_relation");
     }
-
+    
+    /**
+     * Gets the primary contact work phone of the current logged in user.
+     * @param none
+     * @return String that contains the primary contact work phone of the user.
+     */
     public static String getPrimaryWorkPhone() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("primary_work_phone");
     }
-
+    
+    /**
+     * Gets the primary contact address of the current logged in user.
+     * @param none
+     * @return String that contains the primary contact address of the user.
+     */
     public static String getPrimaryAddress() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("primary_address");
     }
-
+    
+    /**
+     * Gets the secondary contact name of the current logged in user.
+     * @param none
+     * @return String that contains the secondary contact name of the user.
+     */
     public static String getSecondaryContact() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("secondary_name");
     }
-
+    
+    /**
+     * Gets the secondary contact phone of the current logged in user.
+     * @param none
+     * @return String that contains the secondary contact phone of the user.
+     */
     public static String getSecondaryPhone() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("secondary_phone_number");
     }
-
+    
+    /**
+     * Gets the secondary contact relation of the current logged in user.
+     * @param none
+     * @return String that contains the secondary contact relation of the user.
+     */
     public static String getSecondaryRelation() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("secondary_relation");
     }
-
+    
+    /**
+     * Gets the secondary contact work phone of the current logged in user.
+     * @param none
+     * @return String that contains the secondary contact work phone of the user.
+     */
     public static String getSecondaryWorkPhone() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("secondary_work_phone");
     }
-
+    
+    /**
+     * Gets the secondary contact address of the current logged in user.
+     * @param none
+     * @return String that contains the secondary contact address of the user.
+     */
     public static String getSecondaryAddress() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("secondary_address");
     }
-
+    
+    /**
+     * Gets the vacation time of the current logged in user.
+     * @param none
+     * @return String that contains the vacation time of the user.
+     */
     public static String getVacationTime() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("vacation_time");
     }
-
+    
+    /**
+     * Gets the sick time of the current logged in user.
+     * @param none
+     * @return String that contains the sick time of the user.
+     */
     public static String getSickTime() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("sick_time");
     }
-
+    
+    /**
+     * Gets the vacation time used of the current logged in user.
+     * @param none
+     * @return String that contains the vacation time used of the user.
+     */
     public static String getVacationTimeUsed() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("vacation_time_used");
     }
-
+    
+    /**
+     * Gets the sick time used of the current logged in user.
+     * @param none
+     * @return String that contains the sick time used of the user.
+     */
     public static String getSickTimeUsed() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("sick_time_used");
     }
 
     //Setter Methods
+    
+    /**
+     * Sets the first name of the user
+     * @param String, firstName, contains the first name of the user
+     * @return none.
+     */       
     public static void setFirstName(String firstName){
         Document find = employeesCollection.find(new Document("first_name", getFirstName())).first();
 
@@ -281,7 +362,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the last name of the user
+     * @param String, lastName, contains the lastName of the user
+     * @return none.
+     */ 
     public static void setLastName(String lastName){
         Document find = employeesCollection.find(new Document("last_name", getLastName())).first();
 
@@ -295,7 +381,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the address of the user
+     * @param String, address, contains the address of the user
+     * @return none.
+     */ 
     public static void setAddress(String address){
         Document find = employeesCollection.find(new Document("address", getAddress())).first();
 
@@ -309,6 +400,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Sets the first name of the user
+     * @param String, zipcode, contains the zipcode of the user
+     * @return none.
+     */     
     public static void setZipcode(String zipcode){
         Document find = employeesCollection.find(new Document("zipcode", getZipcode())).first();
 
@@ -322,6 +419,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Sets the city of the user
+     * @param String, city, contains the city of the user
+     * @return none.
+     */     
     public static void setCity(String city){
         Document find = employeesCollection.find(new Document("city", getCity())).first();
 
@@ -335,6 +438,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Sets the State of the user
+     * @param String, state, contains the State of the user
+     * @return none.
+     */     
     public static void setState(String state){
         Document find = employeesCollection.find(new Document("state", getState())).first();
 
@@ -350,6 +459,11 @@ public class employeeIO {
     }
 
     //Primary Contact
+    /**
+     * Sets the primary contact name of the current user
+     * @param String, newEmergencyName, contains the full primary contact name of the user
+     * @return none.
+     */     
     public static void setEmergencyName(String newEmergencyName) {
         Document find = employeesCollection.find(new Document("primary_contact", getPrimaryContact())).first();
 
@@ -363,7 +477,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the primary contact phone of the current user
+     * @param String, newEmergencyPhone, contains the full primary contact phone of the user
+     * @return none.
+     */   
     public static void setEmergencyPhone(String newEmergencyPhone) {
         Document find = employeesCollection.find(new Document("primary_phone", getPrimaryPhone())).first();
 
@@ -377,7 +496,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the primary contact name of the current user
+     * @param String, newRelation, contains the full primary contact relation of the user
+     * @return none.
+     */   
     public static void setEmergencyRelation(String newRelation) {
         Document find = employeesCollection.find(new Document("primary_relation", getPrimaryRelation())).first();
 
@@ -391,7 +515,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the primary contact address of the current user
+     * @param String, newAddress, contains the full primary contact address of the user
+     * @return none.
+     */   
     public static void setEmergencyAddress(String newAddress) {
         Document find = employeesCollection.find(new Document("primary_address", getPrimaryAddress())).first();
 
@@ -405,7 +534,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the primary contact work phone of the current user
+     * @param String, newWorkPhone, contains the full primary contact work phone of the user
+     * @return none.
+     */   
     public static void setEmergencyWorkPhone(String newWorkPhone) {
         Document find = employeesCollection.find(new Document("primary_work_phone", getPrimaryWorkPhone())).first();
 
@@ -421,6 +555,12 @@ public class employeeIO {
     }
 
     //Secondary Contact
+    
+    /**
+     * Sets the secondary contact name of the current user
+     * @param String, newEmergencyName, contains the full secondary contact name of the user
+     * @return none.
+     */       
     public static void setSecEmergencyName(String newEmergencyName) {
         Document find = employeesCollection.find(new Document("secondary_name", getSecondaryContact())).first();
 
@@ -434,7 +574,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the secondary contact phone of the current user
+     * @param String, newEmergencyPhone, contains the full secondary phone number of the user
+     * @return none.
+     */   
     public static void setSecEmergencyPhone(String newEmergencyPhone) {
         Document find = employeesCollection.find(new Document("secondary_phone_number", getSecondaryPhone())).first();
 
@@ -448,7 +593,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the secondary contact name of the current user
+     * @param String, newRelation, contains the secondary contact relation of the user
+     * @return none.
+     */   
     public static void setSecEmergencyRelation(String newRelation) {
         Document find = employeesCollection.find(new Document("secondary_relation", getSecondaryRelation())).first();
 
@@ -462,7 +612,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the secondary contact address of the current user
+     * @param String, newAddress, contains the secondary contact address of the user
+     * @return none.
+     */   
     public static void setSecEmergencyAddress(String newAddress) {
         Document find = employeesCollection.find(new Document("secondary_address", getSecondaryAddress())).first();
 
@@ -476,7 +631,12 @@ public class employeeIO {
             e.printStackTrace();
         }
     }
-
+    
+    /**
+     * Sets the secondary contact work phone of the current user
+     * @param String, newWorkPhone, contains the secondary contact relation of the user
+     * @return none.
+     */   
     public static void setSecEmergencyWorkPhone(String newWorkPhone) {
         Document find = employeesCollection.find(new Document("secondary_work_phone", getSecondaryWorkPhone())).first();
 
