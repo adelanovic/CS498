@@ -25,11 +25,16 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class scheduleIO {
     public static MongoCollection<Document> scheduleCollection = mongodbStream.database.getCollection("Schedule");
-
+   
     public static void createNewSchedule(){
 
     }
-
+    
+/**
+ * Display the weekly schedule for the employee
+ * @param none
+ * @return none
+ */
     public static void getSchedule(){
         String textStyle = "-fx-font-size: 16px;";
         Text date = new Text();
@@ -77,34 +82,80 @@ public class scheduleIO {
         loginStage.mainStage.regEmployees.scheduleGridPane.add(postSunday,7,2);
     }
 
+/**
+ * Display the current date range of the schedule.
+ * @param none
+ * @return String, contains the current Date range of the schedule
+ */
     public static String getDate() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("date");
     }
+    
+/**
+ * Display the post for Monday.
+ * @param none
+ * @return String, contains the current post for Monday.
+ */    
     public static String getPostMonday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_monday");
     }
+    
+/**
+ * Display the current post for Tuesday.
+ * @param none
+ * @return String, contains the current post for Tuesday.
+ */     
     public static String getPostTuesday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_tuesday");
     }
+/**
+ * Display the current post for Wednesday.
+ * @param none
+ * @return String, contains the current post for Wednesday.
+ */     
     public static String getPostWednesday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_wednesday");
     }
+    
+/**
+ * Display the current post for Thursday.
+ * @param none
+ * @return String, contains the current post for Thursday.
+ */     
     public static String getPostThursday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_thursday");
     }
+    
+/**
+ * Display the current post for Friday.
+ * @param none
+ * @return String, contains the current post for Friday.
+ */     
     public static String getPostFriday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_friday");
     }
+    
+/**
+ * Display the current post Saturday.
+ * @param none
+ * @return String, contains the current post for Saturday.
+ */     
     public static String getPostSaturday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_saturday");
     }
+    
+/**
+ * Display the current post Sunday
+ * @param none
+ * @return String, contains the current post for Sunday.
+ */     
     public static String getPostSunday() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_sunday");
