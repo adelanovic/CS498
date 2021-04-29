@@ -89,7 +89,11 @@ public class regemployeeStage {
     @FXML public Button requestSuccessBtn;
     @FXML public AnchorPane leaveAnchorPane;
 
-    //Sets up all the initial values on regular employee stage load
+/**
+ * Sets up all the initial values when a user logs in.
+ * @param none
+ * @return none
+ */
     @FXML
     public void setValues(){
         //Personal Information
@@ -155,13 +159,19 @@ public class regemployeeStage {
         sickTimeYTD.setEditable(false);
         sickTime.setText(employeeIO.getSickTime());
         sickTime.setEditable(false);
-
+        
+        //Disables the Schedule pane if its a supervisor
         if(employeeIO.getisSupervisor()){
             schedulePane.setDisable(true);
         }
 
     }
-
+    
+/**
+ * Sets up the resources page webView.
+ * @param none
+ * @return none
+ */
     public void displayResourcesRegular(Event event) {
         webEngine = resourceWebView.getEngine();
         webEngine.load("https://www.afsfc.af.mil/");
@@ -174,7 +184,12 @@ public class regemployeeStage {
             }
         });
     }
-
+    
+/**
+ * Sets up the Bolo Page webView.
+ * @param none
+ * @return none
+ */
     public void displayBoloPage(Event event) {
         webEngine = bolowebView.getEngine();
         webEngine.load("https://www.fbi.gov/wanted/topten");
@@ -187,7 +202,12 @@ public class regemployeeStage {
             }
         });
     }
-
+    
+/**
+ * Handles the stage if the edit personal information button is clicked.
+ * @param none
+ * @return none
+ */  
     public void editPersonalInfoClicked(ActionEvent actionEvent) {
         savePersonalInfo.setVisible(true);
         editPersonalInfo.setVisible(false);
@@ -199,7 +219,12 @@ public class regemployeeStage {
         state.setEditable(true);
 
     }
-
+    
+/**
+ * Handles the stage if the save personal info. button is clicked.
+ * @param none
+ * @return none
+ */  
     public void savePersonalInfoClicked(ActionEvent actionEvent) {
         savePersonalInfo.setVisible(false);
         editPersonalInfo.setVisible(true);
@@ -225,7 +250,11 @@ public class regemployeeStage {
         employeeIO.setZipcode(newZipcode);
 
     }
-
+/**
+ * Handles the stage if the edit primary contact button is clicked.
+ * @param none
+ * @return none
+ */  
     public void editPrimaryContactClicked(ActionEvent actionEvent) {
         emergencyName.setEditable(true);
         emergencyPhone.setEditable(true);
@@ -236,6 +265,11 @@ public class regemployeeStage {
         savePrimaryContact.setVisible(true);
     }
 
+/**
+ * Handles the stage if the save primary contact button is clicked.
+ * @param none
+ * @return none
+ */      
     public void savePrimaryContactClicked(ActionEvent actionEvent) {
         emergencyName.setEditable(false);
         emergencyPhone.setEditable(false);
@@ -257,7 +291,12 @@ public class regemployeeStage {
         employeeIO.setEmergencyAddress(newAddress);
         employeeIO.setEmergencyWorkPhone(newWorkPhone);
     }
-
+    
+/**
+ * Handles the stage if the edit secondary contact button is clicked.
+ * @param none
+ * @return none
+ */  
     public void editSecondaryContactClicked(ActionEvent actionEvent) {
         emergencyNameSec.setEditable(true);
         emergencyPhoneSec.setEditable(true);
@@ -267,7 +306,12 @@ public class regemployeeStage {
         editSecondaryContact.setVisible(false);
         saveSecondaryContact.setVisible(true);
     }
-
+    
+/**
+ * Handles the stage if the save secondary contact button is clicked.
+ * @param none
+ * @return none
+ */  
     public void saveSecondaryContactClicked(ActionEvent actionEvent) {
         emergencyNameSec.setEditable(false);
         emergencyPhoneSec.setEditable(false);
@@ -293,7 +337,12 @@ public class regemployeeStage {
         System.out.println(monday);
 
     }
-
+    
+/**
+ * Handles the stage if the submit request for time off button is clicked.
+ * @param none
+ * @return none
+ */  
     public void submitRequestClicked(ActionEvent actionEvent) {
 
         try {
@@ -332,11 +381,21 @@ public class regemployeeStage {
         }
 
     }
-
+    
+/**
+ * Gets the schedule for the current user logged in.
+ * @param none
+ * @return none
+ */  
     public void getScheduleForEmployee(Event event) {
         scheduleIO.getSchedule();
     }
 
+/**
+ * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
+ * @param none
+ * @return none
+ */     
     public void getTimeApproval(Event event) {
         int i,j = 0,k = 0;
 
@@ -382,12 +441,22 @@ public class regemployeeStage {
         approvalNotifications.getChildren().addAll(gridPane);
 
     }
-
+    
+/**
+ * Handles the stage if there is an error with the request for time off.
+ * @param none
+ * @return none
+ */  
     public void closeErrorFieldClicked(ActionEvent actionEvent) {
         requestErrorPane.setVisible(false);
 
     }
-
+    
+/**
+ * Handles the stage if the request time off was successful.
+ * @param none
+ * @return none
+ */  
     public void requestBtnConfirmationClicked(ActionEvent actionEvent) {
         requestSuccessPane.setVisible(false);
         requestReason.setText("");
