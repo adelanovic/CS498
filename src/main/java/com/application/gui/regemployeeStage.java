@@ -1,21 +1,22 @@
 package com.application.gui;
 
 import com.application.databaseOps.employeeIO;
+import com.application.databaseOps.requestResponse;
 import com.application.databaseOps.requestsIO;
 import com.application.databaseOps.scheduleIO;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
 import javafx.fxml.FXML;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.time.format.DateTimeFormatter;
+import java.util.function.UnaryOperator;
 
 public class regemployeeStage {
     @FXML public AnchorPane mainDashboard;
@@ -75,7 +76,7 @@ public class regemployeeStage {
     @FXML public AnchorPane requestSuccessPane;
     @FXML public Text requestSuccessField;
     @FXML public Button requestSuccessBtn;
-
+    @FXML public AnchorPane leaveAnchorPane;
 
     //Sets up all the initial values on regular employee stage load
     @FXML
@@ -326,7 +327,49 @@ public class regemployeeStage {
     }
 
     public void getTimeApproval(Event event) {
+        int i,j = 0,k = 0;
+
         requestsIO.getAllRequests();
+        GridPane gridPane = new GridPane();
+
+        ColumnConstraints constraints = new ColumnConstraints();
+        constraints.setMinWidth(85);
+        RowConstraints rowConstraints = new RowConstraints();
+        rowConstraints.setMinHeight(50);
+        ColumnConstraints constraintsTwo = new ColumnConstraints();
+        constraintsTwo.setMinWidth(88);
+        RowConstraints rowConstraintsTwo = new RowConstraints();
+        rowConstraints.setMinHeight(50);
+        ColumnConstraints constraintsThree = new ColumnConstraints();
+        constraintsThree.setMinWidth(60);
+        RowConstraints rowConstraintsThree = new RowConstraints();
+        rowConstraints.setMinHeight(50);
+
+        gridPane.getColumnConstraints().addAll(constraints, constraintsTwo, constraintsThree);
+        gridPane.getRowConstraints().addAll(rowConstraints, rowConstraintsTwo, rowConstraintsThree);
+
+        for (i = 0; i < requestsIO.requests.size(); i++) {
+            Button cancelBtn = new Button();
+            cancelBtn.setText("Cancel");
+            cancelBtn.setStyle("-fx-background-color:  red; -fx-text-fill: white");
+            Text requestStart = new Text();
+            Text requestEnd = new Text();
+            Text status = new Text();
+
+            requestStart.setText(requestsIO.requests.get(i).getRequest_start());
+            requestEnd.setText(requestsIO.requests.get(i).getRequest_end());
+            status.setText(requestsIO.requests.get(i).getRequest_Status());
+
+            gridPane.add(requestStart, k,j);
+            gridPane.add(requestEnd, k+1, j);
+            gridPane.add(status, k+2, j);
+            gridPane.add(cancelBtn, k+3,j);
+
+            j++;
+        }
+        approvalNotifications.getChildren().removeAll(approvalNotifications.getChildren());
+        approvalNotifications.getChildren().addAll(gridPane);
+
     }
 
     public void closeErrorFieldClicked(ActionEvent actionEvent) {

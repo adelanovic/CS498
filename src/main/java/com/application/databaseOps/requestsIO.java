@@ -5,11 +5,18 @@ import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
-import java.util.Objects;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import java.util.*;
+import java.util.function.Consumer;
+
 import static com.mongodb.client.model.Filters.eq;
 
 public class requestsIO {
     public static MongoCollection<Document> requestsCollection = mongodbStream.database.getCollection("TimeOffRequests");
+    public static ArrayList<requestResponse> requests = new ArrayList<>();
 
     public static void sendNewRequest(String requestStart, String requestEnd, String typeRequest, String startTime, String endTime, String reason) {
         try {
@@ -33,8 +40,19 @@ public class requestsIO {
     }
 
     public static void getAllRequests() {
+        Consumer<Document> printConsumer = new Consumer<Document>() {
+            @Override
+            public void accept(final Document document) {
+                String response = document.toJson();
+                JsonElement je = JsonParser.parseString(response);
+                Gson gson = new GsonBuilder().create();
+                requestResponse responses  = gson.fromJson(je, requestResponse.class);
+                requests.add(responses);
+            }
+        };
 
-        //loginStage.mainStage.regEmployees.timeapprovalNotification.add
+        requestsCollection.find(eq("user_id", employeeIO.getUserId()))
+                .forEach(printConsumer);
 
     }
 
@@ -52,6 +70,7 @@ public class requestsIO {
         Bson filter = eq("user_id", employeeIO.getUserId());
         return(String)(Objects.requireNonNull(requestsCollection.find(filter).first())).get("status");
     }
+
 
 
 
