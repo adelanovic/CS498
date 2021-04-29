@@ -18,6 +18,17 @@ import javafx.scene.web.WebView;
 import java.time.format.DateTimeFormatter;
 import java.util.function.UnaryOperator;
 
+
+/**
+ * Controller class for the regular employee login stage. Controls are GUI information contained/displayed in the panes.
+ * Also updates, deletes, information as required as well as error handling operations.
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
 public class regemployeeStage {
     @FXML public AnchorPane mainDashboard;
 
