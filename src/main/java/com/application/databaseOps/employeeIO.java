@@ -7,93 +7,186 @@ import org.bson.BsonArray;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import java.util.Objects;
-
 import static com.mongodb.client.model.Filters.eq;
+
+/**
+ * Defines the Employee Operations to the database.
+ * Class: CS498 Capstone Project
+ * Instructor: Professor Spetka, Scott
+ * Date: 02/15/2021
+ * Last Revision: 02/15/2021
+ * @author Adis Delanovic
+ *
+ */
 
 public class employeeIO {
     public static MongoCollection<Document> employeesCollection = mongodbStream.database.getCollection("Members");
 
-    //Returns the user_id of the logged in user
+    /**
+     * Returns the user ID that is currently logged in
+     * @param none
+     * @return String that contains the User Id from the database.
+     */
     public static String getUserId() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("user_id");
     }
-
+    
+    /**
+     * Returns the supervisor ID of the user that is currently logged in
+     * @param none
+     * @return String that contains the supervisor ID from the database.
+     */
     public static String getSupervisorId() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("supervisor_id");
     }
-
+    
+    /**
+     * Checks if the current user is a supervisor
+     * @param none
+     * @return boolean, returns true if the user is a supervisor, false otherwise.
+     */
     public static Boolean getisSupervisor() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (Boolean) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("is_supervisor");
     }
-
+    
+    /**
+     * Gets the first name of the current logged in user.
+     * @param none
+     * @return String that contains the first name.
+     */
     public static String getFirstName() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("first_name");
     }
-
+    
+    /**
+     * Gets the last name of the current logged in user.
+     * @param none
+     * @return String that contains the last name.
+     */
     public static String getLastName() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("last_name");
     }
-
+    
+    /**
+     * Gets the date of birth of the current logged in user.
+     * @param none
+     * @return String that contains the date of birth.
+     */
     public static String getDob() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("dob");
     }
-
+    
+    /**
+     * Gets the hire date of the current logged in user.
+     * @param none
+     * @return String that contains the hire date.
+     */    
     public static String getHireDate() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("hire_date");
     }
-
+    
+    /**
+     * Gets the email address of the current logged in user.
+     * @param none
+     * @return String that contains the email address.
+     */
     public static String getEmailAddress() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("email_address");
     }
-
+    
+    /**
+     * Gets the address of the current logged in user.
+     * @param none
+     * @return String that contains the address.
+     */
     public static String getAddress() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("address");
     }
-
+    
+    /**
+     * Gets the city of the current logged in user.
+     * @param none
+     * @return String that contains the city.
+     */   
     public static String getCity() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("city");
     }
-
+    
+    /**
+     * Gets the zipcode of the current logged in user.
+     * @param none
+     * @return String that contains the zipcode.
+     */   
     public static String getZipcode() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("zipcode");
     }
-
+    
+    /**
+     * Gets the state of the current logged in user.
+     * @param none
+     * @return String that contains the state.
+     */
     public static String getState() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("state");
     }
-
+    
+    /**
+     * Gets the next evaluation date of the current logged in user.
+     * @param none
+     * @return String that contains the evaluation date.
+     */
     public static String getNextEval() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("next_eval");
     }
-
+    
+    /**
+     * Gets the salary of the current logged in user.
+     * @param none
+     * @return Double that contains the salary.
+     */
     public static Double getSalary() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (Double) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("salary");
     }
-
+    
+    /**
+     * Gets the shift assigned of the current logged in user.
+     * @param none
+     * @return String that contains the shift assigned.
+     */
     public static String getShiftAssigned() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("shift_assigned");
     }
-
+    
+    /**
+     * Gets the supervisor name of the current logged in user.
+     * @param none
+     * @return String that contains the supervisor name.
+     */
     public static String getSupervisor() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("supervisor");
     }
-
+    
+    /**
+     * Gets the jog title of the current logged in user.
+     * @param none
+     * @return String that contains the first name.
+     */
     public static String getJobTitle() {
         Bson filter = eq("email_address", loginStage.activeUser.getUsername());
         return (String) (Objects.requireNonNull(employeesCollection.find(filter).first())).get("job_title");
