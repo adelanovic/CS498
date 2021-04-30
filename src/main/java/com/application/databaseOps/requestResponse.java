@@ -56,7 +56,6 @@ public class requestResponse {
 
 /**
  * Returns the user ID of the current user that made the request
- * @param none
  * @return String, containing the user ID
  */
     public String getUserId() {
@@ -65,7 +64,6 @@ public class requestResponse {
     
 /**
  * Returns the request end date of the current user that made the request
- * @param none
  * @return String, containing the request end date
  */
     public String getRequest_end() {
@@ -74,7 +72,6 @@ public class requestResponse {
     
 /**
  * Returns the request start date of the current user that made the request
- * @param none
  * @return String, containing the request start date
  */
     public String getRequest_start(){
@@ -83,7 +80,6 @@ public class requestResponse {
     
 /**
  * Returns the request status of the current user that made the request
- * @param none
  * @return String, containing the status of the request (pending/approved)
  */
     public String getRequest_Status(){
@@ -92,7 +88,6 @@ public class requestResponse {
     
 /**
  * Returns the reason of the current user that made the request
- * @param none
  * @return String, containing the reason for the request
  */
     public String getReason(){

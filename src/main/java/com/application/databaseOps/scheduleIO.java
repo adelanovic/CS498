@@ -32,8 +32,6 @@ public class scheduleIO {
     
 /**
  * Display the weekly schedule for the employee
- * @param none
- * @return none
  */
     public static void getSchedule(){
         String textStyle = "-fx-font-size: 16px;";
@@ -84,7 +82,6 @@ public class scheduleIO {
 
 /**
  * Display the current date range of the schedule.
- * @param none
  * @return String, contains the current Date range of the schedule
  */
     public static String getDate() {
@@ -94,7 +91,6 @@ public class scheduleIO {
     
 /**
  * Display the post for Monday.
- * @param none
  * @return String, contains the current post for Monday.
  */    
     public static String getPostMonday() {
@@ -104,7 +100,6 @@ public class scheduleIO {
     
 /**
  * Display the current post for Tuesday.
- * @param none
  * @return String, contains the current post for Tuesday.
  */     
     public static String getPostTuesday() {
@@ -113,7 +108,6 @@ public class scheduleIO {
     }
 /**
  * Display the current post for Wednesday.
- * @param none
  * @return String, contains the current post for Wednesday.
  */     
     public static String getPostWednesday() {
@@ -123,7 +117,6 @@ public class scheduleIO {
     
 /**
  * Display the current post for Thursday.
- * @param none
  * @return String, contains the current post for Thursday.
  */     
     public static String getPostThursday() {
@@ -133,7 +126,6 @@ public class scheduleIO {
     
 /**
  * Display the current post for Friday.
- * @param none
  * @return String, contains the current post for Friday.
  */     
     public static String getPostFriday() {
@@ -143,7 +135,6 @@ public class scheduleIO {
     
 /**
  * Display the current post Saturday.
- * @param none
  * @return String, contains the current post for Saturday.
  */     
     public static String getPostSaturday() {
@@ -153,7 +144,6 @@ public class scheduleIO {
     
 /**
  * Display the current post Sunday
- * @param none
  * @return String, contains the current post for Sunday.
  */     
     public static String getPostSunday() {

@@ -35,8 +35,6 @@ public class supervisorModeStage {
     
 /**
  * Handles the stage if the display schedule button is clicked.
- * @param none
- * @return none
  */  
     public void displaySchedulePane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(false);
@@ -47,8 +45,6 @@ public class supervisorModeStage {
     
 /**
  * Handles the stage if request time off button is clicked.
- * @param none
- * @return none
  */  
     public void requestTimeOffPanee(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(false);
@@ -59,8 +55,6 @@ public class supervisorModeStage {
     
 /**
  * Handles the stage if the daily passdowns button is clicked.
- * @param none
- * @return none
  */  
     public void displayDailyPassdownsPane(ActionEvent actionEvent) {
         passdownsAnchor.setVisible(true);
@@ -71,8 +65,6 @@ public class supervisorModeStage {
     
 /**
  * Handles the stage for the Resources Pane. Currently takes a supervisor to resources for forms and information.
- * @param none
- * @return none
  */  
     public void displayResourcesPane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(true);

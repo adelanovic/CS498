@@ -30,8 +30,7 @@ public class requestsIO {
     
 /**
  * Returns the user ID of the current user that made the request
- * @param request start datem request end date, type of request, start time, end time and reason. All update certain things in the DB for the request.
- * @return none
+ * @param requestStart date request end date, type of request, start time, end time and reason. All update certain things in the DB for the request.
  */
     public static void sendNewRequest(String requestStart, String requestEnd, String typeRequest, String startTime, String endTime, String reason) {
         try {
@@ -56,8 +55,6 @@ public class requestsIO {
 /**
  * Returns all requests of a user. Utilizes the google GSON library to convert from JSON to 
  * an ArrayList. The requestResponse ArrayList is populated.
- * @param none
- * @return none
  */
     public static void getAllRequests() {
         Consumer<Document> printConsumer = new Consumer<Document>() {
@@ -77,7 +74,6 @@ public class requestsIO {
     
 /**
  * Returns the request start date of the current user that made the request
- * @param none
  * @return String, containing the request start date.
  */
     public static String getRequestStart() {
@@ -87,7 +83,6 @@ public class requestsIO {
 
 /**
  * Returns the request end of the current user that made the request
- * @param none
  * @return String, containing request end.
  */    
     public static String getRequestEnd() {
@@ -97,7 +92,6 @@ public class requestsIO {
     
 /**
  * Returns the request status of the current user that made the request
- * @param none
  * @return String, containing the request status (pending/approved)
  */    
     public static String getRequestStatus() {

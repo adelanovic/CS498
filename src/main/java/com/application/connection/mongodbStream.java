@@ -30,7 +30,6 @@ public class mongodbStream {
 
 /**
  * Creates the connection to the Database using provided password and username
- * @param none
  * @return 1 on success, -1 on failure
  */
 
@@ -66,8 +65,6 @@ public class mongodbStream {
     
 /**
  * Disconnects the connection from the database.
- * @param none
- * @return 1 on success, -1 on failure
  */
 
     public static void disconnect_database() {
@@ -82,7 +79,6 @@ public class mongodbStream {
 /**
  * Sets the user password.
  * @param password, String that contains a user provided password
- * @return none
  */
     
     public void setPassword(String password) {
@@ -92,7 +88,6 @@ public class mongodbStream {
 /**
  * Sets the database name.
  * @param db_name, String that contains a user provided database
- * @return none
  */
     public void setDbname(String db_name) {
         this.db_name = db_name;
@@ -101,7 +96,6 @@ public class mongodbStream {
 /**
  * Sets the user email.
  * @param username, String that contains a user provided email for logging in.
- * @return none
  */
  
     public void setEmailAddress(String username) {
@@ -110,7 +104,6 @@ public class mongodbStream {
     
 /**
  * Gets the current Database.
- * @param none
  * @return db_name, String
  */
   
@@ -119,7 +112,6 @@ public class mongodbStream {
     }
 /**
  * Gets the current user provided password.
- * @param none
  * @return password, String
  */
    
@@ -129,7 +121,6 @@ public class mongodbStream {
     
 /**
  * Gets the current Database.
- * @param none
  * @return db_name, String
  */
     

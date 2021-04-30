@@ -38,8 +38,6 @@ public class loginStage {
     
 /**
  * Handles all login requests after the login button was clicked. Loads the appropriate errors or *.fxml stages.
- * @param none
- * @return none
  */
     @FXML
     private void loginClicked()  {
@@ -105,8 +103,6 @@ public class loginStage {
     
 /**
  * Exits the application and disconnects from the database cleaning up any active threads..
- * @param none
- * @return none
  */  
     public void exitClicked(ActionEvent actionEvent) {
         Platform.exit();
@@ -114,8 +110,6 @@ public class loginStage {
 
 /**
  * Toggles the show password checkbox. The user is shown the password as either masked with '*' or plain text.
- * @param none
- * @return none
  */      
     public void toggleShowPassword(ActionEvent actionEvent) {
         if (showPasswordChecked.isSelected()) {

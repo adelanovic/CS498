@@ -8,7 +8,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.fxml.FXML;
@@ -16,7 +15,7 @@ import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.time.format.DateTimeFormatter;
-import java.util.function.UnaryOperator;
+
 
 
 /**
@@ -91,8 +90,6 @@ public class regemployeeStage {
 
 /**
  * Sets up all the initial values when a user logs in.
- * @param none
- * @return none
  */
     @FXML
     public void setValues(){
@@ -169,8 +166,6 @@ public class regemployeeStage {
     
 /**
  * Sets up the resources page webView.
- * @param none
- * @return none
  */
     public void displayResourcesRegular(Event event) {
         webEngine = resourceWebView.getEngine();
@@ -187,8 +182,6 @@ public class regemployeeStage {
     
 /**
  * Sets up the Bolo Page webView.
- * @param none
- * @return none
  */
     public void displayBoloPage(Event event) {
         webEngine = bolowebView.getEngine();
@@ -205,8 +198,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if the edit personal information button is clicked.
- * @param none
- * @return none
  */  
     public void editPersonalInfoClicked(ActionEvent actionEvent) {
         savePersonalInfo.setVisible(true);
@@ -222,8 +213,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if the save personal info. button is clicked.
- * @param none
- * @return none
  */  
     public void savePersonalInfoClicked(ActionEvent actionEvent) {
         savePersonalInfo.setVisible(false);
@@ -252,8 +241,6 @@ public class regemployeeStage {
     }
 /**
  * Handles the stage if the edit primary contact button is clicked.
- * @param none
- * @return none
  */  
     public void editPrimaryContactClicked(ActionEvent actionEvent) {
         emergencyName.setEditable(true);
@@ -267,8 +254,6 @@ public class regemployeeStage {
 
 /**
  * Handles the stage if the save primary contact button is clicked.
- * @param none
- * @return none
  */      
     public void savePrimaryContactClicked(ActionEvent actionEvent) {
         emergencyName.setEditable(false);
@@ -294,8 +279,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if the edit secondary contact button is clicked.
- * @param none
- * @return none
  */  
     public void editSecondaryContactClicked(ActionEvent actionEvent) {
         emergencyNameSec.setEditable(true);
@@ -309,8 +292,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if the save secondary contact button is clicked.
- * @param none
- * @return none
  */  
     public void saveSecondaryContactClicked(ActionEvent actionEvent) {
         emergencyNameSec.setEditable(false);
@@ -340,8 +321,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if the submit request for time off button is clicked.
- * @param none
- * @return none
  */  
     public void submitRequestClicked(ActionEvent actionEvent) {
 
@@ -384,8 +363,6 @@ public class regemployeeStage {
     
 /**
  * Gets the schedule for the current user logged in.
- * @param none
- * @return none
  */  
     public void getScheduleForEmployee(Event event) {
         scheduleIO.getSchedule();
@@ -393,8 +370,6 @@ public class regemployeeStage {
 
 /**
  * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
- * @param none
- * @return none
  */     
     public void getTimeApproval(Event event) {
         int i,j = 0,k = 0;
@@ -444,8 +419,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if there is an error with the request for time off.
- * @param none
- * @return none
  */  
     public void closeErrorFieldClicked(ActionEvent actionEvent) {
         requestErrorPane.setVisible(false);
@@ -454,8 +427,6 @@ public class regemployeeStage {
     
 /**
  * Handles the stage if the request time off was successful.
- * @param none
- * @return none
  */  
     public void requestBtnConfirmationClicked(ActionEvent actionEvent) {
         requestSuccessPane.setVisible(false);

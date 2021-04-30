@@ -42,8 +42,6 @@ public class parentmainStage {
 
 /**
  * Opens the main menu located in the top right hand corner. Closes if its already open.
- * @param none
- * @return none
  */
     public void openExitMenu(MouseEvent mouseEvent) {
         if (!applicationPane.isVisible()) {
@@ -55,8 +53,6 @@ public class parentmainStage {
     
 /**
  * Exits the application, disconnects from the database and cleans up all residual threads.
- * @param none
- * @return none
  */
     public void exitApplicationBtnClicked(ActionEvent actionEvent) {
         Platform.exit();
@@ -64,8 +60,6 @@ public class parentmainStage {
     
 /**
  * Logs out of the application and displays the login stage again
- * @param none
- * @return none
  */
     public void logOutBtnClicked(ActionEvent actionEvent) {
 

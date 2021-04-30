@@ -24,7 +24,6 @@ public class employeeIO {
 
     /**
      * Returns the user ID that is currently logged in
-     * @param none
      * @return String that contains the User Id from the database.
      */
     public static String getUserId() {
@@ -34,7 +33,6 @@ public class employeeIO {
     
     /**
      * Returns the supervisor ID of the user that is currently logged in
-     * @param none
      * @return String that contains the supervisor ID from the database.
      */
     public static String getSupervisorId() {
@@ -44,7 +42,6 @@ public class employeeIO {
     
     /**
      * Checks if the current user is a supervisor
-     * @param none
      * @return boolean, returns true if the user is a supervisor, false otherwise.
      */
     public static Boolean getisSupervisor() {
@@ -54,7 +51,6 @@ public class employeeIO {
     
     /**
      * Gets the first name of the current logged in user.
-     * @param none
      * @return String that contains the first name.
      */
     public static String getFirstName() {
@@ -64,7 +60,6 @@ public class employeeIO {
     
     /**
      * Gets the last name of the current logged in user.
-     * @param none
      * @return String that contains the last name.
      */
     public static String getLastName() {
@@ -74,7 +69,6 @@ public class employeeIO {
     
     /**
      * Gets the date of birth of the current logged in user.
-     * @param none
      * @return String that contains the date of birth.
      */
     public static String getDob() {
@@ -84,7 +78,6 @@ public class employeeIO {
     
     /**
      * Gets the hire date of the current logged in user.
-     * @param none
      * @return String that contains the hire date.
      */    
     public static String getHireDate() {
@@ -94,7 +87,6 @@ public class employeeIO {
     
     /**
      * Gets the email address of the current logged in user.
-     * @param none
      * @return String that contains the email address.
      */
     public static String getEmailAddress() {
@@ -104,7 +96,6 @@ public class employeeIO {
     
     /**
      * Gets the address of the current logged in user.
-     * @param none
      * @return String that contains the address.
      */
     public static String getAddress() {
@@ -114,7 +105,6 @@ public class employeeIO {
     
     /**
      * Gets the city of the current logged in user.
-     * @param none
      * @return String that contains the city.
      */   
     public static String getCity() {
@@ -124,7 +114,6 @@ public class employeeIO {
     
     /**
      * Gets the zipcode of the current logged in user.
-     * @param none
      * @return String that contains the zipcode.
      */   
     public static String getZipcode() {
@@ -134,7 +123,6 @@ public class employeeIO {
     
     /**
      * Gets the state of the current logged in user.
-     * @param none
      * @return String that contains the state.
      */
     public static String getState() {
@@ -144,7 +132,6 @@ public class employeeIO {
     
     /**
      * Gets the next evaluation date of the current logged in user.
-     * @param none
      * @return String that contains the evaluation date.
      */
     public static String getNextEval() {
@@ -154,7 +141,6 @@ public class employeeIO {
     
     /**
      * Gets the salary of the current logged in user.
-     * @param none
      * @return Double that contains the salary.
      */
     public static Double getSalary() {
@@ -164,7 +150,6 @@ public class employeeIO {
     
     /**
      * Gets the shift assigned of the current logged in user.
-     * @param none
      * @return String that contains the shift assigned.
      */
     public static String getShiftAssigned() {
@@ -174,7 +159,6 @@ public class employeeIO {
     
     /**
      * Gets the supervisor name of the current logged in user.
-     * @param none
      * @return String that contains the supervisor name.
      */
     public static String getSupervisor() {
@@ -184,7 +168,6 @@ public class employeeIO {
     
     /**
      * Gets the job title of the current logged in user.
-     * @param none
      * @return String that contains the first name.
      */
     public static String getJobTitle() {
@@ -194,7 +177,6 @@ public class employeeIO {
     
     /**
      * Gets the certifications of the current logged in user.
-     * @param none
      * @return BsonArray that contains the certifications of the user.
      */
     public static BsonArray getCertifications() {
@@ -204,7 +186,6 @@ public class employeeIO {
     
     /**
      * Gets the primary contact of the current logged in user.
-     * @param none
      * @return String that contains the primary contact name of the user.
      */
     public static String getPrimaryContact() {
@@ -214,7 +195,6 @@ public class employeeIO {
     
     /**
      * Gets the primary contact phone of the current logged in user.
-     * @param none
      * @return String that contains the primary contact phone of the user.
      */
     public static String getPrimaryPhone() {
@@ -224,7 +204,6 @@ public class employeeIO {
     
     /**
      * Gets the primary relation of the current logged in user.
-     * @param none
      * @return String that contains the primary relation of the user.
      */
     public static String getPrimaryRelation() {
@@ -234,7 +213,6 @@ public class employeeIO {
     
     /**
      * Gets the primary contact work phone of the current logged in user.
-     * @param none
      * @return String that contains the primary contact work phone of the user.
      */
     public static String getPrimaryWorkPhone() {
@@ -244,7 +222,6 @@ public class employeeIO {
     
     /**
      * Gets the primary contact address of the current logged in user.
-     * @param none
      * @return String that contains the primary contact address of the user.
      */
     public static String getPrimaryAddress() {
@@ -254,7 +231,6 @@ public class employeeIO {
     
     /**
      * Gets the secondary contact name of the current logged in user.
-     * @param none
      * @return String that contains the secondary contact name of the user.
      */
     public static String getSecondaryContact() {
@@ -264,7 +240,6 @@ public class employeeIO {
     
     /**
      * Gets the secondary contact phone of the current logged in user.
-     * @param none
      * @return String that contains the secondary contact phone of the user.
      */
     public static String getSecondaryPhone() {
@@ -274,7 +249,6 @@ public class employeeIO {
     
     /**
      * Gets the secondary contact relation of the current logged in user.
-     * @param none
      * @return String that contains the secondary contact relation of the user.
      */
     public static String getSecondaryRelation() {
@@ -284,7 +258,6 @@ public class employeeIO {
     
     /**
      * Gets the secondary contact work phone of the current logged in user.
-     * @param none
      * @return String that contains the secondary contact work phone of the user.
      */
     public static String getSecondaryWorkPhone() {
@@ -294,7 +267,6 @@ public class employeeIO {
     
     /**
      * Gets the secondary contact address of the current logged in user.
-     * @param none
      * @return String that contains the secondary contact address of the user.
      */
     public static String getSecondaryAddress() {
@@ -304,7 +276,6 @@ public class employeeIO {
     
     /**
      * Gets the vacation time of the current logged in user.
-     * @param none
      * @return String that contains the vacation time of the user.
      */
     public static String getVacationTime() {
@@ -314,7 +285,6 @@ public class employeeIO {
     
     /**
      * Gets the sick time of the current logged in user.
-     * @param none
      * @return String that contains the sick time of the user.
      */
     public static String getSickTime() {
@@ -324,7 +294,6 @@ public class employeeIO {
     
     /**
      * Gets the vacation time used of the current logged in user.
-     * @param none
      * @return String that contains the vacation time used of the user.
      */
     public static String getVacationTimeUsed() {
@@ -334,7 +303,6 @@ public class employeeIO {
     
     /**
      * Gets the sick time used of the current logged in user.
-     * @param none
      * @return String that contains the sick time used of the user.
      */
     public static String getSickTimeUsed() {
@@ -346,8 +314,7 @@ public class employeeIO {
     
     /**
      * Sets the first name of the user
-     * @param String, firstName, contains the first name of the user
-     * @return none.
+     * @param firstName, a String that contains the first name of the user
      */       
     public static void setFirstName(String firstName){
         Document find = employeesCollection.find(new Document("first_name", getFirstName())).first();
@@ -365,8 +332,7 @@ public class employeeIO {
     
     /**
      * Sets the last name of the user
-     * @param String, lastName, contains the lastName of the user
-     * @return none.
+     * @param lastName, String,  contains the lastName of the user
      */ 
     public static void setLastName(String lastName){
         Document find = employeesCollection.find(new Document("last_name", getLastName())).first();
@@ -384,8 +350,7 @@ public class employeeIO {
     
     /**
      * Sets the address of the user
-     * @param String, address, contains the address of the user
-     * @return none.
+     * @param address, String,  contains the address of the user
      */ 
     public static void setAddress(String address){
         Document find = employeesCollection.find(new Document("address", getAddress())).first();
@@ -403,8 +368,7 @@ public class employeeIO {
     
     /**
      * Sets the first name of the user
-     * @param String, zipcode, contains the zipcode of the user
-     * @return none.
+     * @param zipcode, String,  contains the zipcode of the user
      */     
     public static void setZipcode(String zipcode){
         Document find = employeesCollection.find(new Document("zipcode", getZipcode())).first();
@@ -422,8 +386,7 @@ public class employeeIO {
     
     /**
      * Sets the city of the user
-     * @param String, city, contains the city of the user
-     * @return none.
+     * @param city, String, contains the city of the user
      */     
     public static void setCity(String city){
         Document find = employeesCollection.find(new Document("city", getCity())).first();
@@ -441,8 +404,7 @@ public class employeeIO {
     
     /**
      * Sets the State of the user
-     * @param String, state, contains the State of the user
-     * @return none.
+     * @param state, String, contains the State of the user
      */     
     public static void setState(String state){
         Document find = employeesCollection.find(new Document("state", getState())).first();
@@ -461,8 +423,7 @@ public class employeeIO {
     //Primary Contact
     /**
      * Sets the primary contact name of the current user
-     * @param String, newEmergencyName, contains the full primary contact name of the user
-     * @return none.
+     * @param newEmergencyName, String,  contains the full primary contact name of the user
      */     
     public static void setEmergencyName(String newEmergencyName) {
         Document find = employeesCollection.find(new Document("primary_contact", getPrimaryContact())).first();
@@ -480,8 +441,7 @@ public class employeeIO {
     
     /**
      * Sets the primary contact phone of the current user
-     * @param String, newEmergencyPhone, contains the full primary contact phone of the user
-     * @return none.
+     * @param newEmergencyPhone, String,  contains the full primary contact phone of the user
      */   
     public static void setEmergencyPhone(String newEmergencyPhone) {
         Document find = employeesCollection.find(new Document("primary_phone", getPrimaryPhone())).first();
@@ -499,8 +459,7 @@ public class employeeIO {
     
     /**
      * Sets the primary contact name of the current user
-     * @param String, newRelation, contains the full primary contact relation of the user
-     * @return none.
+     * @param newRelation, String,  contains the full primary contact relation of the user
      */   
     public static void setEmergencyRelation(String newRelation) {
         Document find = employeesCollection.find(new Document("primary_relation", getPrimaryRelation())).first();
@@ -518,8 +477,7 @@ public class employeeIO {
     
     /**
      * Sets the primary contact address of the current user
-     * @param String, newAddress, contains the full primary contact address of the user
-     * @return none.
+     * @param newAddress, String, contains the full primary contact address of the user
      */   
     public static void setEmergencyAddress(String newAddress) {
         Document find = employeesCollection.find(new Document("primary_address", getPrimaryAddress())).first();
@@ -537,8 +495,7 @@ public class employeeIO {
     
     /**
      * Sets the primary contact work phone of the current user
-     * @param String, newWorkPhone, contains the full primary contact work phone of the user
-     * @return none.
+     * @param newWorkPhone, String, contains the full primary contact work phone of the user
      */   
     public static void setEmergencyWorkPhone(String newWorkPhone) {
         Document find = employeesCollection.find(new Document("primary_work_phone", getPrimaryWorkPhone())).first();
@@ -558,8 +515,7 @@ public class employeeIO {
     
     /**
      * Sets the secondary contact name of the current user
-     * @param String, newEmergencyName, contains the full secondary contact name of the user
-     * @return none.
+     * @param newEmergencyName, String, contains the full secondary contact name of the user
      */       
     public static void setSecEmergencyName(String newEmergencyName) {
         Document find = employeesCollection.find(new Document("secondary_name", getSecondaryContact())).first();
@@ -577,8 +533,7 @@ public class employeeIO {
     
     /**
      * Sets the secondary contact phone of the current user
-     * @param String, newEmergencyPhone, contains the full secondary phone number of the user
-     * @return none.
+     * @param newEmergencyPhone, String,  contains the full secondary phone number of the user
      */   
     public static void setSecEmergencyPhone(String newEmergencyPhone) {
         Document find = employeesCollection.find(new Document("secondary_phone_number", getSecondaryPhone())).first();
@@ -596,8 +551,7 @@ public class employeeIO {
     
     /**
      * Sets the secondary contact name of the current user
-     * @param String, newRelation, contains the secondary contact relation of the user
-     * @return none.
+     * @param newRelation, String, contains the secondary contact relation of the user
      */   
     public static void setSecEmergencyRelation(String newRelation) {
         Document find = employeesCollection.find(new Document("secondary_relation", getSecondaryRelation())).first();
@@ -615,8 +569,7 @@ public class employeeIO {
     
     /**
      * Sets the secondary contact address of the current user
-     * @param String, newAddress, contains the secondary contact address of the user
-     * @return none.
+     * @param newAddress, String,  contains the secondary contact address of the user
      */   
     public static void setSecEmergencyAddress(String newAddress) {
         Document find = employeesCollection.find(new Document("secondary_address", getSecondaryAddress())).first();
@@ -634,8 +587,7 @@ public class employeeIO {
     
     /**
      * Sets the secondary contact work phone of the current user
-     * @param String, newWorkPhone, contains the secondary contact relation of the user
-     * @return none.
+     * @param newWorkPhone, String,  contains the secondary contact relation of the user
      */   
     public static void setSecEmergencyWorkPhone(String newWorkPhone) {
         Document find = employeesCollection.find(new Document("secondary_work_phone", getSecondaryWorkPhone())).first();
