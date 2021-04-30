@@ -1,7 +1,6 @@
 package com.application.gui;
 
 import com.application.databaseOps.employeeIO;
-import com.application.databaseOps.requestResponse;
 import com.application.databaseOps.requestsIO;
 import com.application.databaseOps.scheduleIO;
 import javafx.beans.value.ChangeListener;
@@ -14,8 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-
 
 
 /**
@@ -371,7 +370,8 @@ public class regemployeeStage {
 /**
  * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
  */     
-    public void getTimeApproval(Event event) {
+    public void getTimeApproval(Event event) throws IOException {
+
         int i,j = 0,k = 0;
 
         requestsIO.getAllRequests();
