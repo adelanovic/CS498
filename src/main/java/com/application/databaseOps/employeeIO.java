@@ -2,11 +2,19 @@ package com.application.databaseOps;
 
 import com.application.connection.mongodbStream;
 import com.application.gui.loginStage;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mongodb.client.MongoCollection;
 import org.bson.BsonArray;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+
+import java.util.ArrayList;
 import java.util.Objects;
+import java.util.function.Consumer;
+
 import static com.mongodb.client.model.Filters.eq;
 
 /**
@@ -21,6 +29,7 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class employeeIO {
     public static MongoCollection<Document> employeesCollection = mongodbStream.database.getCollection("Members");
+    public static ArrayList<employeeResponse> dataRequested = new ArrayList<>();
 
     /**
      * Returns the user ID that is currently logged in
@@ -601,5 +610,25 @@ public class employeeIO {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Handles getting all the current users certifications.
+     *
+     */
+    public static void getCertificationList() {
+        Consumer<Document> printConsumer = new Consumer<Document>() {
+            @Override
+            public void accept(final Document document) {
+                String response = document.toJson();
+                JsonElement je = JsonParser.parseString(response);
+                Gson gson = new GsonBuilder().create();
+                employeeResponse responses  = gson.fromJson(je, employeeResponse.class);
+                dataRequested.add(responses);
+            }
+        };
+
+        employeesCollection.find(eq("user_id", employeeIO.getUserId()))
+                .forEach(printConsumer);
     }
 }

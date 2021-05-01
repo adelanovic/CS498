@@ -36,7 +36,6 @@ public class regemployeeStage {
     @FXML public TextField lastName;
     @FXML public TextField hireDate;
     @FXML public TextField salary;
-    @FXML public TextArea certifications;
     @FXML public TextField nextEvaluation;
     @FXML public TextField shiftAssigned;
     @FXML public TextField supervisor;
@@ -86,8 +85,9 @@ public class regemployeeStage {
     @FXML public Text requestSuccessField;
     @FXML public Button requestSuccessBtn;
     @FXML public AnchorPane leaveAnchorPane;
+    @FXML public Pane certsPane;
 
-/**
+    /**
  * Sets up all the initial values when a user logs in.
  */
     @FXML
@@ -160,7 +160,7 @@ public class regemployeeStage {
         if(employeeIO.getisSupervisor()){
             schedulePane.setDisable(true);
         }
-
+        setUpCertifications();
     }
     
 /**
@@ -371,12 +371,10 @@ public class regemployeeStage {
  * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
  */     
     public void getTimeApproval(Event event) throws IOException {
-
         int i,j = 0,k = 0;
 
         requestsIO.getAllRequests();
         GridPane gridPane = new GridPane();
-
         ColumnConstraints constraints = new ColumnConstraints();
         constraints.setMinWidth(85);
         RowConstraints rowConstraints = new RowConstraints();
@@ -416,6 +414,22 @@ public class regemployeeStage {
         approvalNotifications.getChildren().addAll(gridPane);
 
     }
+
+    public void setUpCertifications(){
+        VBox certs = new VBox();
+        employeeIO.getCertificationList();
+
+        for(int i = 0; i < employeeIO.dataRequested.size(); i++){
+            for(int j = 0; j < employeeIO.dataRequested.get(i).getCerts().size(); j++) {
+                Text cert = new Text();
+                cert.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
+                cert.setText("[" + (j+1) + "] " + employeeIO.dataRequested.get(i).getCerts().get(j) + "\n");
+                certs.getChildren().add(cert);
+            }
+        }
+    certsPane.getChildren().addAll(certs);
+    }
+
     
 /**
  * Handles the stage if there is an error with the request for time off.

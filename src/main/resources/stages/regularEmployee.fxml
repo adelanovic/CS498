@@ -41,7 +41,6 @@
                         <TextField fx:id="salary" layoutX="629.0" layoutY="69.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
                         <Text layoutX="461.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Certifications" />
                         <Line endX="-100.0" endY="409.0" layoutX="498.0" layoutY="10.0" startX="-100.0" stroke="#00308f" />
-                        <TextArea fx:id="certifications" layoutX="461.0" layoutY="250.0" prefHeight="89.0" prefWidth="321.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
                         <Text layoutX="456.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Next Evaluation" />
                         <TextField fx:id="nextEvaluation" layoutX="456.0" layoutY="69.0" style="-fx-background-color: #ffffff; -fx-border-color: #00308f;" />
                         <Text layoutX="458.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shift Assigned" />
@@ -69,6 +68,11 @@
                         </Text>
                         <TextField fx:id="jobTitle" layoutX="629.0" layoutY="190.0" style="-fx-border-color: #00308f; -fx-background-color: #ffffff;" />
                         <Text layoutX="632.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Title" />
+                        <Pane layoutX="458.0" layoutY="248.0" prefHeight="174.0" prefWidth="324.0" style="-fx-border-color: #00308f;">
+                           <children>
+                              <Pane fx:id="certsPane" layoutX="29.0" layoutY="14.0" prefHeight="147.0" prefWidth="264.0" />
+                           </children>
+                        </Pane>
                      </children></AnchorPane>
             </content>
           </Tab>
