@@ -118,7 +118,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab fx:id="leaveBalances" onSelectionChanged="#getTimeApproval" text="Leave Balances">
+            <Tab fx:id="leaveBalances" text="Leave Balances">
               <content>
                 <AnchorPane id="personalInfo" fx:id="leaveAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

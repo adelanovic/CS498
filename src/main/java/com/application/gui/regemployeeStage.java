@@ -7,6 +7,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.fxml.FXML;
@@ -15,6 +17,8 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+
+import static com.application.gui.loginStage.mainStage;
 
 
 /**
@@ -161,6 +165,7 @@ public class regemployeeStage {
             schedulePane.setDisable(true);
         }
         setUpCertifications();
+        getTimeApproval();
     }
     
 /**
@@ -370,7 +375,9 @@ public class regemployeeStage {
 /**
  * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
  */     
-    public void getTimeApproval(Event event) throws IOException {
+    public void getTimeApproval(){
+
+
         int i,j = 0,k = 0;
 
         requestsIO.getAllRequests();
@@ -410,7 +417,6 @@ public class regemployeeStage {
 
             j++;
         }
-        approvalNotifications.getChildren().removeAll(approvalNotifications.getChildren());
         approvalNotifications.getChildren().addAll(gridPane);
 
     }
@@ -455,4 +461,5 @@ public class regemployeeStage {
             vacationTimeChecked.setSelected(false);
         }
     }
+
 }
