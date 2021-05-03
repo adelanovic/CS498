@@ -380,27 +380,21 @@ public class regemployeeStage {
  * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
  */     
     public void getTimeApproval(){
+        ColumnConstraints[] columnConstraintses = new ColumnConstraints[10];
+        RowConstraints[] rowConstraintses = new RowConstraints[10];
 
+        for (int i = 0 ; i < 10 ; i++) {
+            columnConstraintses[i] = new ColumnConstraints(80);
+            rowConstraintses[i] = new RowConstraints(50);
+        }
 
         int i,j = 0,k = 0;
 
         requestsIO.getAllRequests();
         GridPane gridPane = new GridPane();
-        ColumnConstraints constraints = new ColumnConstraints();
-        constraints.setMinWidth(85);
-        RowConstraints rowConstraints = new RowConstraints();
-        rowConstraints.setMinHeight(50);
-        ColumnConstraints constraintsTwo = new ColumnConstraints();
-        constraintsTwo.setMinWidth(88);
-        RowConstraints rowConstraintsTwo = new RowConstraints();
-        rowConstraints.setMinHeight(50);
-        ColumnConstraints constraintsThree = new ColumnConstraints();
-        constraintsThree.setMinWidth(60);
-        RowConstraints rowConstraintsThree = new RowConstraints();
-        rowConstraints.setMinHeight(50);
 
-        gridPane.getColumnConstraints().addAll(constraints, constraintsTwo, constraintsThree);
-        gridPane.getRowConstraints().addAll(rowConstraints, rowConstraintsTwo, rowConstraintsThree);
+        gridPane.getColumnConstraints().addAll(columnConstraintses);
+        gridPane.getRowConstraints().addAll(rowConstraintses);
 
         for (i = 0; i < requestsIO.requests.size(); i++) {
             Button cancelBtn = new Button();
@@ -419,6 +413,7 @@ public class regemployeeStage {
             gridPane.add(status, k+2, j);
             gridPane.add(cancelBtn, k+3,j);
 
+            //Handles the Cancel Button
             cancelBtn.setOnMouseClicked(f -> {
                 Node source = (Node) f.getSource();
                 int row = GridPane.getRowIndex(source);
@@ -426,7 +421,7 @@ public class regemployeeStage {
                 Bson filter = and(eq("user_id", employeeIO.getUserId()), eq("request_start",requestsIO.requests.get(row).getRequest_start()));
                 requestsCollection.deleteOne(filter);
                 cancelBtn.setText("Removed");
-                cancelBtn.setStyle("-fx-background-color:  yellow; -fx-text-fill: black");
+                cancelBtn.setStyle("-fx-background-color:   #f6a91c; -fx-text-fill: black");
             });
 
             j++;
