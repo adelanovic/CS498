@@ -53,6 +53,14 @@ public class requestResponse {
     @Expose
     private String status;
 
+    @SerializedName("first_name")
+    @Expose
+    private String firstName;
+
+    @SerializedName("last_name")
+    @Expose
+    private String lastName;
+
 
 /**
  * Returns the user ID of the current user that made the request
@@ -92,5 +100,45 @@ public class requestResponse {
  */
     public String getReason(){
         return reason;
+    }
+
+    /**
+     * Returns the reason of the current user that made the request
+     * @return String, containing the first name of employee making request
+     */
+    public String getFirstName(){
+        return firstName;
+    }
+
+    /**
+     * Returns the reason of the current user that made the request
+     * @return String, containing the last name of employee making request
+     */
+    public String getLastName(){
+        return lastName;
+    }
+
+    /**
+     * Returns the reason of the current user that made the request
+     * @return String, containing the start time of a request
+     */
+    public String getStartTime(){
+        return startTime;
+    }
+
+    /**
+     * Returns the reason of the current user that made the request
+     * @return String, containing the end time of a request
+     */
+    public String getEndTime(){
+        return endTime;
+    }
+
+    /**
+     * Returns the reason of the current user that made the request
+     * @return String, containing the status of a request
+     */
+    public String getType(){
+        return type;
     }
 }

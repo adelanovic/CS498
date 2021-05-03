@@ -19,7 +19,7 @@
                   <Font name="Lucida Console" size="12.0" />
                </font>
             </Button>
-            <Button id="menuButtons" fx:id="requestsOffBtn" layoutX="275.0" layoutY="5.0" mnemonicParsing="false" onAction="#requestTimeOffPanee" prefHeight="31.0" prefWidth="184.0" text="Time Off Requests" textFill="WHITE">
+            <Button id="menuButtons" fx:id="requestsOffBtn" layoutX="275.0" layoutY="5.0" mnemonicParsing="false" onAction="#requestTimeOffPane" prefHeight="31.0" prefWidth="184.0" text="Time Off Requests" textFill="WHITE">
                <font>
                   <Font name="Lucida Console" size="12.0" />
                </font>
@@ -42,21 +42,61 @@
             <Image url="@../images/defensor-fortis.png" />
          </image>
       </ImageView>
-      <Pane id="schedulePane" layoutY="225.0" prefHeight="425.0" prefWidth="924.0">
+      <Pane id="schedulePane" fx:id="mainSupervisorPane" layoutY="225.0" prefHeight="423.0" prefWidth="919.0">
          <children>
             <AnchorPane fx:id="resourcesMainPane" prefHeight="425.0" prefWidth="919.0" visible="false">
                <children>
                   <ScrollPane layoutX="14.0" layoutY="14.0" prefHeight="405.0" prefWidth="902.0">
                      <content>
-                        <WebView fx:id="supervisorWebView" prefHeight="400.0" prefWidth="897.0" />
+                        <WebView fx:id="supervisorWebView" prefHeight="398.0" prefWidth="907.0" />
                      </content>
                   </ScrollPane>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="passdownsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
-            <AnchorPane fx:id="requestsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false">
+            <AnchorPane fx:id="requestsAnchor" prefHeight="425.0" prefWidth="919.0">
                <children>
-                  <Pane prefHeight="425.0" prefWidth="919.0" />
+                  <Pane fx:id="timeOffRequests" layoutX="12.0" layoutY="27.0" prefHeight="395.0" prefWidth="896.0" />
+                  <Text layoutX="12.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="100.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="192.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="280.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Time">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="375.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Time">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="469.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reason">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="554.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="642.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+                     <font>
+                        <Font name="Verdana Bold" size="12.0" />
+                     </font>
+                  </Text>
                </children></AnchorPane>
             <AnchorPane fx:id="schedulingAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
          </children></Pane>

@@ -20,6 +20,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
@@ -339,22 +340,33 @@ public class regemployeeStage {
             String startTime = requestStartTime.getText();
             String endTime = requestEndTime.getText();
             String reason = requestReason.getText();
+            int startInt = Integer.parseInt(String.valueOf(startTime));
+            int endInt = Integer.parseInt(String.valueOf(endTime));
 
-            if(vacationTimeChecked.isSelected() && !sickTimeChecked.isSelected()){
+            if (vacationTimeChecked.isSelected() && !sickTimeChecked.isSelected()) {
                 typeRequest = "Vacation";
                 requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
                 requestSuccessPane.setVisible(true);
                 requestSuccessField.setText("Your request was successfully submitted!");
 
-            }else if(sickTimeChecked.isSelected() && !vacationTimeChecked.isSelected()) {
+            } else if (sickTimeChecked.isSelected() && !vacationTimeChecked.isSelected()) {
                 typeRequest = "Sick";
                 requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
                 requestSuccessPane.setVisible(true);
                 requestSuccessField.setText("Your request was successfully submitted!");
 
-            }else if(sickTimeChecked.isSelected() && vacationTimeChecked.isSelected()){
+            } else if (sickTimeChecked.isSelected() && vacationTimeChecked.isSelected()) {
                 requestErrorPane.setVisible(true);
                 errorTexTField.setText("You can't select both sick and vacation time!");
+
+            } else if(requestStartDate.getValue().isAfter(requestEndDate.getValue())) {
+                requestErrorPane.setVisible(true);
+                errorTexTField.setText("The start date must be before the end date!");
+
+            } else if(startInt > endInt) {
+                requestErrorPane.setVisible(true);
+                errorTexTField.setText("The start time must be before the end time! Use 0000 2359 Format");
+
             }else{
                 typeRequest = "Unknown";
                 requestsIO.sendNewRequest(requestStart, requestEnd, typeRequest, startTime, endTime, reason);
@@ -399,6 +411,8 @@ public class regemployeeStage {
         for (i = 0; i < requestsIO.requests.size(); i++) {
             Button cancelBtn = new Button();
             cancelBtn.setText("Cancel");
+            cancelBtn.setMinHeight(23);
+            cancelBtn.setMinWidth(75);
             cancelBtn.setStyle("-fx-background-color:  red; -fx-text-fill: white");
             Text requestStart = new Text();
             Text requestEnd = new Text();

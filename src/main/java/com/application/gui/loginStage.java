@@ -62,8 +62,9 @@ public class loginStage {
 
                 mainStage.viewsLoader = new FXMLLoader(getClass().getResource("/stages/supervisorMode.fxml"));
                 Parent supervisorRoot = mainStage.viewsLoader.load();
-                mainStage.supervisorMode = mainStage.viewsLoader.getController();
+                mainStage.supervisor = mainStage.viewsLoader.getController();
                 mainStage.mainView.getChildren().setAll(supervisorRoot);
+                mainStage.supervisor.loadDefaultPane();
 
             }else if(supervisorMode.isSelected() && !employeeIO.getisSupervisor()){
                 FXMLLoader mainStageLoader = new FXMLLoader(getClass().getResource("/stages/login.fxml"));

@@ -23,7 +23,7 @@ import javafx.scene.layout.Pane;
 public class parentmainStage {
     public FXMLLoader viewsLoader;
     public regemployeeStage regEmployees;
-    public supervisorModeStage supervisorMode;
+    public supervisorModeStage supervisor;
     @FXML
     public AnchorPane mainstageAnchorPane;
     @FXML

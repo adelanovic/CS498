@@ -38,6 +38,8 @@ public class requestsIO {
         try {
             Document request = new Document("_id", new ObjectId());
             request.append("user_id", employeeIO.getUserId())
+                    .append("first_name", employeeIO.getFirstName())
+                    .append("last_name", employeeIO.getLastName())
                     .append("request_start", requestStart)
                     .append("request_end", requestEnd)
                     .append("type", typeRequest)
@@ -104,4 +106,26 @@ public class requestsIO {
         Bson filter = eq("user_id", employeeIO.getUserId());
         return(String)(Objects.requireNonNull(requestsCollection.find(filter).first())).get("status");
     }
+
+
+    /**
+     * Returns all requests of a user. Utilizes the google GSON library to convert from JSON to
+     * an ArrayList. The requestResponse ArrayList is populated.
+     */
+    public static void getRequestsForSupervisor() {
+        Consumer<Document> printConsumer = new Consumer<Document>() {
+            @Override
+            public void accept(final Document document) {
+                String response = document.toJson();
+                JsonElement je = JsonParser.parseString(response);
+                Gson gson = new GsonBuilder().create();
+                requestResponse responses  = gson.fromJson(je, requestResponse.class);
+                requests.add(responses);
+            }
+        };
+
+        requestsCollection.find(eq("supervisor_id", employeeIO.getUserId()))
+                .forEach(printConsumer);
+    }
+
 }
