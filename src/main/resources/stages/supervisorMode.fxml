@@ -42,7 +42,7 @@
             <Image url="@../images/defensor-fortis.png" />
          </image>
       </ImageView>
-      <Pane id="schedulePane" layoutX="-5.0" layoutY="226.0" prefHeight="425.0" prefWidth="924.0">
+      <Pane id="schedulePane" layoutY="225.0" prefHeight="425.0" prefWidth="924.0">
          <children>
             <AnchorPane fx:id="resourcesMainPane" prefHeight="425.0" prefWidth="919.0" visible="false">
                <children>
@@ -54,7 +54,10 @@
                </children>
             </AnchorPane>
             <AnchorPane fx:id="passdownsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
-            <AnchorPane fx:id="requestsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
+            <AnchorPane fx:id="requestsAnchor" prefHeight="425.0" prefWidth="919.0" visible="false">
+               <children>
+                  <Pane prefHeight="425.0" prefWidth="919.0" />
+               </children></AnchorPane>
             <AnchorPane fx:id="schedulingAnchor" prefHeight="425.0" prefWidth="919.0" visible="false" />
          </children></Pane>
    </children>

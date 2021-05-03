@@ -1,24 +1,28 @@
 package com.application.gui;
 
+import com.application.connection.mongodbStream;
 import com.application.databaseOps.employeeIO;
 import com.application.databaseOps.requestsIO;
 import com.application.databaseOps.scheduleIO;
+import com.mongodb.client.MongoCollection;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import java.io.IOException;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
 import java.time.format.DateTimeFormatter;
 
-import static com.application.gui.loginStage.mainStage;
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.eq;
 
 
 /**
@@ -415,12 +419,25 @@ public class regemployeeStage {
             gridPane.add(status, k+2, j);
             gridPane.add(cancelBtn, k+3,j);
 
+            cancelBtn.setOnMouseClicked(f -> {
+                Node source = (Node) f.getSource();
+                int row = GridPane.getRowIndex(source);
+                MongoCollection<Document> requestsCollection = mongodbStream.database.getCollection("TimeOffRequests");
+                Bson filter = and(eq("user_id", employeeIO.getUserId()), eq("request_start",requestsIO.requests.get(row).getRequest_start()));
+                requestsCollection.deleteOne(filter);
+                cancelBtn.setText("Removed");
+                cancelBtn.setStyle("-fx-background-color:  yellow; -fx-text-fill: black");
+            });
+
             j++;
         }
         approvalNotifications.getChildren().addAll(gridPane);
 
     }
 
+    /**
+     * Displays all the current user Certifications
+     */
     public void setUpCertifications(){
         VBox certs = new VBox();
         employeeIO.getCertificationList();
@@ -461,5 +478,4 @@ public class regemployeeStage {
             vacationTimeChecked.setSelected(false);
         }
     }
-
 }

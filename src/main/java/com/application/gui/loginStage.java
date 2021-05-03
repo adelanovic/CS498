@@ -4,6 +4,7 @@ import com.application.connection.mongodbStream;
 import com.application.databaseOps.employeeIO;
 import com.mongodb.MongoCommandException;
 import com.mongodb.MongoSecurityException;
+import com.mongodb.client.MongoCollection;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+import java.io.IOException;
+import java.util.Objects;
+
+import static com.mongodb.client.model.Filters.eq;
 
 /**
  * Controller class for the login.fxml page. Controls all login procedures.
@@ -40,7 +48,7 @@ public class loginStage {
  * Handles all login requests after the login button was clicked. Loads the appropriate errors or *.fxml stages.
  */
     @FXML
-    private void loginClicked()  {
+    private void loginClicked() throws IOException {
         try {
             activeUser.setPassword(passwordField.getText());
             activeUser.setEmailAddress(usernameField.getText());
@@ -78,7 +86,10 @@ public class loginStage {
                 Parent root = mainStageLoader.load();
                 mainStage.mainView.getChildren().setAll(root);
             }
-            else{
+            else {
+                Bson filter = eq("email_address", loginStage.activeUser.getUsername());
+                String emailAdrs = (String) (Objects.requireNonNull(employeeIO.employeesCollection.find(filter).first())).get("email_address");
+
                 FXMLLoader mainStageLoader = new FXMLLoader(getClass().getResource("/stages/parentStage.fxml"));
                 Parent root = mainStageLoader.load();
                 mainStage = mainStageLoader.getController();
@@ -92,7 +103,10 @@ public class loginStage {
             }
 
         } catch (MongoCommandException | MongoSecurityException e ) {
-            System.out.println("Password Error");
+            loginErrorField.setVisible(true);
+            errorReason.setText("You've entered the wrong password or username!");
+            mongodbStream.disconnect_database();
+
         } catch (Exception loadException){
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("An Error Occurred!");

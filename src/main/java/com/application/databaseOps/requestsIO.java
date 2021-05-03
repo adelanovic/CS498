@@ -1,6 +1,7 @@
 package com.application.databaseOps;
 
 import com.application.connection.mongodbStream;
+import com.application.gui.regemployeeStage;
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -12,6 +13,7 @@ import com.google.gson.JsonParser;
 import java.util.*;
 import java.util.function.Consumer;
 
+import static com.application.gui.loginStage.mainStage;
 import static com.mongodb.client.model.Filters.eq;
 
 /**
@@ -47,6 +49,10 @@ public class requestsIO {
                     .append("status", "pending");
 
             requestsCollection.insertOne(request);
+
+            //Fixing Bug on Dyanmic Loading
+            //mainStage.regEmployees.setValues();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

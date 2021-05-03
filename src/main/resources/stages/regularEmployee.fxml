@@ -165,12 +165,12 @@
                         <DatePicker fx:id="requestStartDate" layoutX="246.0" layoutY="70.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <DatePicker fx:id="requestEndDate" layoutX="246.0" layoutY="121.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;" />
                         <Button fx:id="submitRequest" layoutX="247.0" layoutY="343.0" mnemonicParsing="false" onAction="#submitRequestClicked" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #003087;" text="Submit Request" textFill="WHITE" />
-                        <Pane fx:id="approvalNotificationsTwo" layoutX="560.0" layoutY="76.0" prefHeight="303.0" prefWidth="317.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;">
+                        <Pane fx:id="approvalNotificationsTwo" layoutX="555.0" layoutY="53.0" prefHeight="363.0" prefWidth="343.0" style="-fx-background-color: ffffff; -fx-border-color: #003087;">
                            <children>
                               <Text layoutX="18.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Start" />
                               <Text fx:id="timeapprovalNotification" layoutX="102.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date End" />
                               <Text layoutX="191.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-                              <Pane fx:id="approvalNotifications" layoutX="18.0" layoutY="39.0" prefHeight="251.0" prefWidth="275.0" />
+                              <Pane fx:id="approvalNotifications" layoutX="18.0" layoutY="39.0" prefHeight="312.0" prefWidth="307.0" />
                            </children></Pane>
                         <AnchorPane fx:id="requestErrorPane" layoutX="223.0" layoutY="32.0" prefHeight="149.0" prefWidth="441.0" style="-fx-background-color: #E8E8E8; -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" visible="false">
                            <children>
