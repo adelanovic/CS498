@@ -392,6 +392,7 @@ public class regemployeeStage {
  * Displays all the current user time off requests in a GridPane. Allows for the ability to cancel requests.
  */     
     public void getTimeApproval(){
+
         ColumnConstraints[] columnConstraintses = new ColumnConstraints[10];
         RowConstraints[] rowConstraintses = new RowConstraints[10];
 

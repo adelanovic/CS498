@@ -8,7 +8,6 @@ import com.mongodb.client.MongoCollection;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Iterator;
 import java.util.logging.Level;
 
 /**

@@ -2,7 +2,12 @@ package com.application.gui;
 
 import com.application.connection.mongodbStream;
 import com.application.databaseOps.employeeIO;
+import com.application.databaseOps.passdownsResponse;
 import com.application.databaseOps.requestsIO;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mongodb.client.MongoCollection;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,15 +15,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.function.Consumer;
 
-import static com.mongodb.client.model.Filters.and;
-import static com.mongodb.client.model.Filters.eq;
+import static com.application.gui.loginStage.mainStage;
+import static com.mongodb.client.model.Filters.*;
 
 
 /**
@@ -44,6 +57,20 @@ public class supervisorModeStage {
     @FXML public AnchorPane requestsAnchor;
     @FXML public AnchorPane schedulingAnchor;
     @FXML public Pane timeOffRequests;
+    @FXML public Button submitPassdowns;
+    @FXML public Pane viewPassDownsPane;
+    @FXML public Button viewPassdowns;
+    @FXML public ScrollPane viewPassDownsScrollPane;
+    @FXML public Button closePassdownsBtn;
+    @FXML public TextArea passdownsTextArea;
+    @FXML public AnchorPane requestSuccessPane;
+    @FXML public Text requestSuccessField;
+    @FXML public Button requestSuccessBtn;
+    @FXML public Button printPassdowns;
+    @FXML public Button savePassdowns;
+    public GridPane gridPane = new GridPane();
+
+    public static ArrayList<passdownsResponse> requestPassdowns = new ArrayList<passdownsResponse>();
 
     /**
  * Handles the stage if the display schedule button is clicked.
@@ -64,7 +91,11 @@ public class supervisorModeStage {
         schedulingAnchor.setVisible(false);
         requestsAnchor.setVisible(true);
 
+        //mainStage.supervisor.timeOffRequests.getChildren().removeAll(mainStage.supervisor.gridPane);
+
+
         getTimeApproval();
+
     }
     
 /**
@@ -97,6 +128,12 @@ public class supervisorModeStage {
         });
     }
 
+
+
+    /**
+     * Handles getting all the day off requests created by an employee.
+     */
+
     public void getTimeApproval(){
         ColumnConstraints[] columnConstraintses = new ColumnConstraints[10];
         RowConstraints[] rowConstraintses = new RowConstraints[10];
@@ -109,7 +146,7 @@ public class supervisorModeStage {
         int i,j = 0,k = 0;
 
         requestsIO.getRequestsForSupervisor();
-        GridPane gridPane = new GridPane();
+
 
         gridPane.getColumnConstraints().addAll(columnConstraintses);
         gridPane.getRowConstraints().addAll(rowConstraintses);
@@ -117,8 +154,6 @@ public class supervisorModeStage {
         for (i = 0; i < requestsIO.requests.size(); i++) {
             Button approveBtn = new Button();
             Button denyBtn = new Button();
-
-
 
             Text requestName = new Text();
             Text requestStart = new Text();
@@ -128,7 +163,6 @@ public class supervisorModeStage {
             Text starTime = new Text();
             Text endTime = new Text();
             Text typeRequest = new Text();
-
 
             String nameofEmployee = requestsIO.requests.get(i).getFirstName() + " " + requestsIO.requests.get(i).getLastName();
             requestName.setText(nameofEmployee);
@@ -216,9 +250,13 @@ public class supervisorModeStage {
 
             j++;
         }
-        timeOffRequests.getChildren().addAll(gridPane);
-
+        mainStage.supervisor.timeOffRequests.getChildren().clear();
+        mainStage.supervisor.timeOffRequests.getChildren().addAll(mainStage.supervisor.gridPane);
     }
+
+    /**
+     * Handles displaying the default pane for supervisor mode
+     */
 
     public void loadDefaultPane() {
         resourcesMainPane.setVisible(true);
@@ -235,5 +273,113 @@ public class supervisorModeStage {
                 System.out.println("Error Occured!");
             }
         });
+    }
+
+    /**
+     * Handles submitting a new passdown to the database for storage.
+     */
+    public void submitPassdownsClicked(ActionEvent actionEvent) {
+        MongoCollection<Document> passdowns = mongodbStream.database.getCollection("Passdowns");
+        try {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            Date date = new Date();
+            String currentDate = formatter.format(date);
+            Document request = new Document("_id", new ObjectId());
+            request.append("user_id", employeeIO.getUserId())
+                    .append("supervisor_name", employeeIO.getLastName() + " " + employeeIO.getFirstName())
+                    .append("date", currentDate)
+                    .append("passdown", passdownsTextArea.getText());
+
+            passdowns.insertOne(request);
+
+            requestSuccessPane.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Handles displaying all the passdowns in the database
+     */
+    public void viewPassdownsClicked(ActionEvent actionEvent) {
+        viewPassDownsPane.setVisible(true);
+        MongoCollection<Document> passdowns = mongodbStream.database.getCollection("Passdowns");
+
+        ColumnConstraints[] columnConstraintses = new ColumnConstraints[10];
+        RowConstraints[] rowConstraintses = new RowConstraints[10];
+
+        for (int i = 0 ; i < 10 ; i++) {
+            columnConstraintses[i] = new ColumnConstraints(120);
+            rowConstraintses[i] = new RowConstraints(50);
+        }
+
+        int i,j = 0,k = 0;
+
+        requestsIO.getRequestsForSupervisor();
+        GridPane gridPane = new GridPane();
+
+        gridPane.getColumnConstraints().addAll(columnConstraintses);
+        gridPane.getRowConstraints().addAll(rowConstraintses);
+
+        Consumer<Document> printConsumer = new Consumer<Document>() {
+            @Override
+            public void accept(final Document document) {
+                String response = document.toJson();
+                JsonElement je = JsonParser.parseString(response);
+                Gson gson = new GsonBuilder().create();
+                passdownsResponse responses  = gson.fromJson(je, passdownsResponse.class);
+                requestPassdowns.add(responses);
+            }
+        };
+
+        passdowns.find()
+                .forEach(printConsumer);
+
+        for(i = 0; i < requestPassdowns.size(); i++){
+            Text supervisorName = new Text();
+            Text dateOfPassdown = new Text();
+            Text passDown = new Text();
+
+            supervisorName.setText(requestPassdowns.get(i).getSupervisorName());
+            dateOfPassdown.setText(requestPassdowns.get(i).getDate());
+            passDown.setText(requestPassdowns.get(i).getPassdown());
+            gridPane.add(supervisorName, k,j);
+            gridPane.add(dateOfPassdown, k+1, j);
+            gridPane.add(passDown, k+2,j);
+
+            j++;
+        }
+
+        viewPassDownsScrollPane.setContent(gridPane);
+    }
+
+    /**
+     * Handles closing the passdowns and viewing a new scene
+     */
+    public void closePassdownsClicked(ActionEvent actionEvent) {
+        viewPassDownsPane.setVisible(false);
+    }
+
+    /**
+     * Handles confirming that a new passdown was submitted
+     */
+    public void requestBtnConfirmationClicked(ActionEvent actionEvent) {
+        requestSuccessPane.setVisible(false);
+        passdownsTextArea.setText("");
+    }
+
+    /**
+     * Handles printing the passdowns to a local printer
+     */
+    public void printPassdownsClicked(ActionEvent actionEvent) {
+
+    }
+
+    /**
+     * Handles saving the passdowns for local storage
+     */
+    public void savePassdownsBtnClicked(ActionEvent actionEvent) throws IOException {
+
     }
 }

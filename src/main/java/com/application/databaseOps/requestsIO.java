@@ -13,7 +13,6 @@ import com.google.gson.JsonParser;
 import java.util.*;
 import java.util.function.Consumer;
 
-import static com.application.gui.loginStage.mainStage;
 import static com.mongodb.client.model.Filters.eq;
 
 /**
