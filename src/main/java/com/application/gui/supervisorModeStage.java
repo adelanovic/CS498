@@ -1,9 +1,7 @@
 package com.application.gui;
 
 import com.application.connection.mongodbStream;
-import com.application.databaseOps.employeeIO;
-import com.application.databaseOps.passdownsResponse;
-import com.application.databaseOps.requestsIO;
+import com.application.databaseOps.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -13,10 +11,9 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
@@ -45,72 +42,107 @@ import static com.mongodb.client.model.Filters.*;
  *
  */
 public class supervisorModeStage {
-    @FXML public Button resourcesBtn;
-    @FXML public Button passdownsBtn;
-    @FXML public Button requestsOffBtn;
-    @FXML public Button schedulingBtn;
-    @FXML public AnchorPane supervisorMainAnchor;
-    @FXML public AnchorPane resourcesMainPane;
-    @FXML public WebView supervisorWebView;
-    @FXML public WebEngine webEngine;
-    @FXML public AnchorPane passdownsAnchor;
-    @FXML public AnchorPane requestsAnchor;
-    @FXML public AnchorPane schedulingAnchor;
-    @FXML public Pane timeOffRequests;
-    @FXML public Button submitPassdowns;
-    @FXML public Pane viewPassDownsPane;
-    @FXML public Button viewPassdowns;
-    @FXML public ScrollPane viewPassDownsScrollPane;
-    @FXML public Button closePassdownsBtn;
-    @FXML public TextArea passdownsTextArea;
-    @FXML public AnchorPane requestSuccessPane;
-    @FXML public Text requestSuccessField;
-    @FXML public Button requestSuccessBtn;
-    @FXML public Button printPassdowns;
-    @FXML public Button savePassdowns;
-    public GridPane gridPane = new GridPane();
+    @FXML
+    public Button resourcesBtn;
+    @FXML
+    public Button passdownsBtn;
+    @FXML
+    public Button requestsOffBtn;
+    @FXML
+    public Button schedulingBtn;
+    @FXML
+    public AnchorPane supervisorMainAnchor;
+    @FXML
+    public AnchorPane resourcesMainPane;
+    @FXML
+    public WebView supervisorWebView;
+    @FXML
+    public WebEngine webEngine;
+    @FXML
+    public AnchorPane passdownsAnchor;
+    @FXML
+    public AnchorPane requestsAnchor;
+    @FXML
+    public AnchorPane schedulingAnchor;
+    @FXML
+    public Pane timeOffRequests;
+    @FXML
+    public Button submitPassdowns;
+    @FXML
+    public Pane viewPassDownsPane;
+    @FXML
+    public Button viewPassdowns;
+    @FXML
+    public ScrollPane viewPassDownsScrollPane;
+    @FXML
+    public Button closePassdownsBtn;
+    @FXML
+    public TextArea passdownsTextArea;
+    @FXML
+    public AnchorPane requestSuccessPane;
+    @FXML
+    public Text requestSuccessField;
+    @FXML
+    public Button requestSuccessBtn;
+    @FXML
+    public Button printPassdowns;
+    @FXML
+    public Button savePassdowns;
+    @FXML
+    public Pane currentRoster;
+    @FXML
+    public Pane schedulePane;
+    @FXML
+    public Pane createaSchedulePane;
+    @FXML
+    public DatePicker dateSchedule;
+    @FXML
+    public VBox rosterVbox;
+    @FXML public ComboBox comboBox;
 
+    public GridPane gridPane = new GridPane();
+    public VBox vbox = new VBox();
     public static ArrayList<passdownsResponse> requestPassdowns = new ArrayList<passdownsResponse>();
+    public static ArrayList<employeeResponse> employeeRoster = new ArrayList<employeeResponse>();
+
 
     /**
- * Handles the stage if the display schedule button is clicked.
- */  
+     * Handles the stage if the display schedule button is clicked.
+     */
     public void displaySchedulePane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(false);
         passdownsAnchor.setVisible(false);
         schedulingAnchor.setVisible(true);
         requestsAnchor.setVisible(false);
+
+        this.vbox.getChildren().removeAll(this.vbox.getChildren());
+        getRoster();
     }
-    
-/**
- * Handles the stage if request time off button is clicked.
- */  
+
+    /**
+     * Handles the stage if request time off button is clicked.
+     */
     public void requestTimeOffPane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(false);
         passdownsAnchor.setVisible(false);
         schedulingAnchor.setVisible(false);
         requestsAnchor.setVisible(true);
-
-        //mainStage.supervisor.timeOffRequests.getChildren().removeAll(mainStage.supervisor.gridPane);
-
-
         getTimeApproval();
-
     }
-    
-/**
- * Handles the stage if the daily passdowns button is clicked.
- */  
+
+    /**
+     * Handles the stage if the daily passdowns button is clicked.
+     */
     public void displayDailyPassdownsPane(ActionEvent actionEvent) {
         passdownsAnchor.setVisible(true);
         resourcesMainPane.setVisible(false);
         schedulingAnchor.setVisible(false);
         requestsAnchor.setVisible(false);
     }
-    
-/**
- * Handles the stage for the Resources Pane. Currently takes a supervisor to resources for forms and information.
- */  
+
+    /**
+     * Handles the stage for the Resources Pane. Currently takes a supervisor to resources for forms and information.
+     */
     public void displayResourcesPane(ActionEvent actionEvent) {
         resourcesMainPane.setVisible(true);
         passdownsAnchor.setVisible(false);
@@ -129,21 +161,20 @@ public class supervisorModeStage {
     }
 
 
-
     /**
      * Handles getting all the day off requests created by an employee.
      */
 
-    public void getTimeApproval(){
+    public void getTimeApproval() {
         ColumnConstraints[] columnConstraintses = new ColumnConstraints[10];
         RowConstraints[] rowConstraintses = new RowConstraints[10];
 
-        for (int i = 0 ; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             columnConstraintses[i] = new ColumnConstraints(90);
             rowConstraintses[i] = new RowConstraints(50);
         }
 
-        int i,j = 0,k = 0;
+        int i, j = 0, k = 0;
 
         requestsIO.getRequestsForSupervisor();
 
@@ -174,7 +205,7 @@ public class supervisorModeStage {
             endTime.setText(requestsIO.requests.get(i).getEndTime());
             typeRequest.setText(requestsIO.requests.get(i).getType());
 
-            if(requestsIO.requests.get(i).getRequest_Status().equals("approved")){
+            if (requestsIO.requests.get(i).getRequest_Status().equals("approved")) {
                 approveBtn.setMinHeight(23);
                 approveBtn.setMinWidth(75);
                 approveBtn.setText("Approved");
@@ -184,7 +215,7 @@ public class supervisorModeStage {
                 denyBtn.setMinHeight(23);
                 denyBtn.setMinWidth(75);
                 denyBtn.setStyle("-fx-background-color:  red; -fx-text-fill: white");
-            }else if(requestsIO.requests.get(i).getRequest_Status().equals("denied")){
+            } else if (requestsIO.requests.get(i).getRequest_Status().equals("denied")) {
                 approveBtn.setText("Approve");
                 approveBtn.setMinHeight(23);
                 approveBtn.setMinWidth(75);
@@ -194,7 +225,7 @@ public class supervisorModeStage {
                 denyBtn.setMinHeight(23);
                 denyBtn.setMinWidth(75);
                 denyBtn.setStyle("-fx-background-color:  #f6a91c; -fx-text-fill: black");
-            } else{
+            } else {
                 approveBtn.setText("Approve");
                 approveBtn.setMinHeight(23);
                 approveBtn.setMinWidth(75);
@@ -207,23 +238,23 @@ public class supervisorModeStage {
                 denyBtn.setStyle("-fx-background-color:  red; -fx-text-fill: white");
             }
 
-            gridPane.add(requestName, k,j);
-            gridPane.add(requestStart, k+1, j);
-            gridPane.add(requestEnd, k+2, j);
-            gridPane.add(starTime, k+3,j);
-            gridPane.add(endTime, k+4,j);
-            gridPane.add(requestReason, k+5,j);
-            gridPane.add(typeRequest,k+6, j);
-            gridPane.add(status, k+7,j);
-            gridPane.add(approveBtn, k+8, j);
-            gridPane.add(denyBtn, k+9, j);
+            gridPane.add(requestName, k, j);
+            gridPane.add(requestStart, k + 1, j);
+            gridPane.add(requestEnd, k + 2, j);
+            gridPane.add(starTime, k + 3, j);
+            gridPane.add(endTime, k + 4, j);
+            gridPane.add(requestReason, k + 5, j);
+            gridPane.add(typeRequest, k + 6, j);
+            gridPane.add(status, k + 7, j);
+            gridPane.add(approveBtn, k + 8, j);
+            gridPane.add(denyBtn, k + 9, j);
 
             //Handles the approve button
             approveBtn.setOnMouseClicked(f -> {
                 Node source = (Node) f.getSource();
                 int row = GridPane.getRowIndex(source);
                 MongoCollection<Document> requestsCollection = mongodbStream.database.getCollection("TimeOffRequests");
-                Bson filter = and(eq("supervisor_id", employeeIO.getUserId()), eq("request_start",requestsIO.requests.get(row).getRequest_start()));
+                Bson filter = and(eq("supervisor_id", employeeIO.getUserId()), eq("request_start", requestsIO.requests.get(row).getRequest_start()));
 
                 Bson newValue = new Document("status", "approved");
                 Bson operation = new Document("$set", newValue);
@@ -238,7 +269,7 @@ public class supervisorModeStage {
                 Node source = (Node) f.getSource();
                 int row = GridPane.getRowIndex(source);
                 MongoCollection<Document> requestsCollection = mongodbStream.database.getCollection("TimeOffRequests");
-                Bson filter = and(eq("supervisor_id", employeeIO.getUserId()), eq("request_start",requestsIO.requests.get(row).getRequest_start()));
+                Bson filter = and(eq("supervisor_id", employeeIO.getUserId()), eq("request_start", requestsIO.requests.get(row).getRequest_start()));
 
                 Bson newValue = new Document("status", "denied");
                 Bson operation = new Document("$set", newValue);
@@ -309,12 +340,12 @@ public class supervisorModeStage {
         ColumnConstraints[] columnConstraintses = new ColumnConstraints[10];
         RowConstraints[] rowConstraintses = new RowConstraints[10];
 
-        for (int i = 0 ; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             columnConstraintses[i] = new ColumnConstraints(120);
             rowConstraintses[i] = new RowConstraints(50);
         }
 
-        int i,j = 0,k = 0;
+        int i, j = 0, k = 0;
 
         requestsIO.getRequestsForSupervisor();
         GridPane gridPane = new GridPane();
@@ -328,7 +359,7 @@ public class supervisorModeStage {
                 String response = document.toJson();
                 JsonElement je = JsonParser.parseString(response);
                 Gson gson = new GsonBuilder().create();
-                passdownsResponse responses  = gson.fromJson(je, passdownsResponse.class);
+                passdownsResponse responses = gson.fromJson(je, passdownsResponse.class);
                 requestPassdowns.add(responses);
             }
         };
@@ -336,7 +367,7 @@ public class supervisorModeStage {
         passdowns.find()
                 .forEach(printConsumer);
 
-        for(i = 0; i < requestPassdowns.size(); i++){
+        for (i = 0; i < requestPassdowns.size(); i++) {
             Text supervisorName = new Text();
             Text dateOfPassdown = new Text();
             Text passDown = new Text();
@@ -344,9 +375,9 @@ public class supervisorModeStage {
             supervisorName.setText(requestPassdowns.get(i).getSupervisorName());
             dateOfPassdown.setText(requestPassdowns.get(i).getDate());
             passDown.setText(requestPassdowns.get(i).getPassdown());
-            gridPane.add(supervisorName, k,j);
-            gridPane.add(dateOfPassdown, k+1, j);
-            gridPane.add(passDown, k+2,j);
+            gridPane.add(supervisorName, k, j);
+            gridPane.add(dateOfPassdown, k + 1, j);
+            gridPane.add(passDown, k + 2, j);
 
             j++;
         }
@@ -381,5 +412,49 @@ public class supervisorModeStage {
      */
     public void savePassdownsBtnClicked(ActionEvent actionEvent) throws IOException {
 
+    }
+
+    /**
+     * Handles getting the current employees roster for a supervisor
+     */
+    public void getRoster() {
+
+        MongoCollection<Document> employeesCollection = mongodbStream.database.getCollection("Members");
+        Consumer<Document> printConsumer = new Consumer<Document>() {
+            @Override
+            public void accept(final Document document) {
+                String response = document.toJson();
+                JsonElement je = JsonParser.parseString(response);
+                Gson gson = new GsonBuilder().create();
+                employeeResponse responses = gson.fromJson(je, employeeResponse.class);
+                employeeRoster.add(responses);
+            }
+        };
+
+        employeesCollection.find(eq("supervisor_id", employeeIO.getUserId()))
+                .forEach(printConsumer);
+
+        setUpRoster();
+
+        comboBox.getItems().removeAll(comboBox.getItems());
+        comboBox.getItems().addAll("Dispatch Operations", "Logistics", "Patrol 1", "Patrol 2", "Patrol 3", "Perimeter");
+
+    }
+
+    /**
+     * Handles setting up the roster for the current supervisor logged in
+     */
+    public void setUpRoster(){
+        mainStage.supervisor.currentRoster.getChildren().clear();
+        vbox.setPadding(new Insets(10, 10, 10, 10));
+        vbox.setSpacing(10);
+        for (com.application.databaseOps.employeeResponse employeeResponse : employeeRoster) {
+            Text employee = new Text();
+            employee.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
+            employee.setText(employeeResponse.getFirstName() + " " + employeeResponse.getLastName());
+            vbox.getChildren().add(employee);
+
+        }
+        mainStage.supervisor.currentRoster.getChildren().addAll(vbox);
     }
 }

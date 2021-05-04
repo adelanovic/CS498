@@ -3,28 +3,28 @@ com/application/connection/mongodbStream.java
 com/application/databaseOps/employeeIO.java
  com.application.databaseOps.employeeIO
  com.application.databaseOps.employeeIO$1
-com/application/databaseOps/requestResponse.java
- com.application.databaseOps.requestResponse
+com/application/gui/regemployeeStage.java
+ com.application.gui.regemployeeStage
+ com.application.gui.regemployeeStage$1
+ com.application.gui.regemployeeStage$2
 com/application/initialstageLogin.java
  com.application.initialstageLogin
 com/application/databaseOps/passdownsResponse.java
  com.application.databaseOps.passdownsResponse
+com/application/databaseOps/scheduleIO.java
+ com.application.databaseOps.scheduleIO
 com/application/launchApp.java
  com.application.launchApp
 com/application/databaseOps/supervisorIO.java
  com.application.databaseOps.supervisorIO
 com/application/databaseOps/employeeResponse.java
  com.application.databaseOps.employeeResponse
+com/application/databaseOps/requestResponse.java
+ com.application.databaseOps.requestResponse
 com/application/databaseOps/requestsIO.java
  com.application.databaseOps.requestsIO
  com.application.databaseOps.requestsIO$1
  com.application.databaseOps.requestsIO$2
-com/application/databaseOps/scheduleIO.java
- com.application.databaseOps.scheduleIO
-com/application/gui/regemployeeStage.java
- com.application.gui.regemployeeStage
- com.application.gui.regemployeeStage$1
- com.application.gui.regemployeeStage$2
 com/application/gui/loginStage.java
  com.application.gui.loginStage
 com/application/gui/parentmainStage.java
@@ -34,3 +34,4 @@ com/application/gui/supervisorModeStage.java
  com.application.gui.supervisorModeStage$1
  com.application.gui.supervisorModeStage$2
  com.application.gui.supervisorModeStage$3
+ com.application.gui.supervisorModeStage$4
