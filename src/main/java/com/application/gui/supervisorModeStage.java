@@ -23,6 +23,7 @@ import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.function.Consumer;
@@ -95,10 +96,21 @@ public class supervisorModeStage {
     @FXML
     public Pane createaSchedulePane;
     @FXML
-    public DatePicker dateSchedule;
-    @FXML
     public VBox rosterVbox;
     @FXML public ComboBox comboBox;
+    @FXML public Button submitSchedule;
+    @FXML public DatePicker dateScheduleFrom;
+    @FXML public TextField employeeName;
+    @FXML public Pane schedulelSuccess;
+    @FXML public Text schedulelSuccessField;
+    @FXML public Button schedulelSuccessBtn;
+    @FXML  public DatePicker dateScheduleTo;
+    @FXML public ComboBox employeeComboBox;
+    @FXML public TextField scheduleStartTime;
+    @FXML public TextField scheduleEndTime;
+    @FXML public Pane schedulError;
+    @FXML public Text scheduleErrorField;
+    @FXML public Button schedulelErrorBtn;
 
     public GridPane gridPane = new GridPane();
     public VBox vbox = new VBox();
@@ -115,7 +127,7 @@ public class supervisorModeStage {
         schedulingAnchor.setVisible(true);
         requestsAnchor.setVisible(false);
 
-        this.vbox.getChildren().removeAll(this.vbox.getChildren());
+        this.vbox.getChildren().clear();
         getRoster();
     }
 
@@ -160,7 +172,6 @@ public class supervisorModeStage {
         });
     }
 
-
     /**
      * Handles getting all the day off requests created by an employee.
      */
@@ -177,7 +188,6 @@ public class supervisorModeStage {
         int i, j = 0, k = 0;
 
         requestsIO.getRequestsForSupervisor();
-
 
         gridPane.getColumnConstraints().addAll(columnConstraintses);
         gridPane.getRowConstraints().addAll(rowConstraintses);
@@ -437,24 +447,64 @@ public class supervisorModeStage {
         setUpRoster();
 
         comboBox.getItems().removeAll(comboBox.getItems());
+        employeeComboBox.getItems().removeAll(employeeComboBox.getItems());
         comboBox.getItems().addAll("Dispatch Operations", "Logistics", "Patrol 1", "Patrol 2", "Patrol 3", "Perimeter");
-
-    }
+        for (com.application.databaseOps.employeeResponse employeeResponse : employeeRoster) {
+            employeeComboBox.getItems().add(employeeResponse.getFirstName() + " " + employeeResponse.getLastName());
+        }
+}
 
     /**
      * Handles setting up the roster for the current supervisor logged in
      */
-    public void setUpRoster(){
+    public void setUpRoster() {
         mainStage.supervisor.currentRoster.getChildren().clear();
         vbox.setPadding(new Insets(10, 10, 10, 10));
         vbox.setSpacing(10);
+        comboBox.getItems().removeAll(comboBox.getItems());
         for (com.application.databaseOps.employeeResponse employeeResponse : employeeRoster) {
             Text employee = new Text();
             employee.setStyle("-fx-font-size: 12px; -fx-font-weight: bold");
             employee.setText(employeeResponse.getFirstName() + " " + employeeResponse.getLastName());
             vbox.getChildren().add(employee);
-
         }
-        mainStage.supervisor.currentRoster.getChildren().addAll(vbox);
+            mainStage.supervisor.currentRoster.getChildren().addAll(vbox);
+    }
+
+    /**
+     * Handles Creating a new schedule for an employee
+     */
+    public void submitScheduleUpdate() {
+
+        String startDate = dateScheduleFrom.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String endDate = dateScheduleTo.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String post = comboBox.getValue().toString();
+        String startTime = scheduleStartTime.getText();
+        String endTime = scheduleEndTime.getText();
+        String employeeName = employeeComboBox.getValue().toString();
+        int startInt = Integer.parseInt(String.valueOf(startTime));
+        int endInt = Integer.parseInt(String.valueOf(endTime));
+
+        if(startInt > endInt) {
+            schedulError.setVisible(true);
+            scheduleErrorField.setText("The start time must be before the end time! Use 0000 2359 Format");
+        }else{
+            scheduleIO.createNewSchedule(employeeName, startDate, endDate, startTime, endTime, post);
+            schedulelSuccess.setVisible(true);
+        }
+    }
+
+    /**
+     * Handles creating a new schedule for an employee success
+     */
+    public void submitRequestSuccessBtn(ActionEvent actionEvent) {
+        schedulelSuccess.setVisible(false);
+    }
+
+    /**
+     * Handles creating a new schedule for an employee fail
+     */
+    public void scheduleErrorBtn(ActionEvent actionEvent) {
+        schedulError.setVisible(false);
     }
 }

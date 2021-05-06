@@ -1,6 +1,5 @@
 package com.application;
 
-import com.application.gui.regemployeeStage;
 import com.application.gui.loginStage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,12 +21,9 @@ import java.io.IOException;
 
 public class initialstageLogin extends Application
 {
-
     @Override
     public void start(Stage primaryStage) throws IOException {
-
         loginStage logIn = new loginStage();
-
         try {
 
             FXMLLoader loadLogin = new FXMLLoader();
@@ -43,7 +39,5 @@ public class initialstageLogin extends Application
         }catch(Exception e){
             e.printStackTrace();
         }
-
-
     }
 }

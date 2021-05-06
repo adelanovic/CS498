@@ -7,9 +7,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import org.bson.Document;
 import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 
 import java.util.Objects;
 
+import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
 
@@ -25,11 +27,9 @@ import static com.mongodb.client.model.Filters.eq;
 
 public class scheduleIO {
     public static MongoCollection<Document> scheduleCollection = mongodbStream.database.getCollection("Schedule");
-   
-    public static void createNewSchedule(){
+    public static MongoCollection<Document> employeesCollection = mongodbStream.database.getCollection("Members");
 
-    }
-    
+
 /**
  * Display the weekly schedule for the employee
  */
@@ -151,4 +151,22 @@ public class scheduleIO {
         return (String) (Objects.requireNonNull(scheduleCollection.find(filter).first())).get("post_sunday");
     }
 
+    /**
+     * Creates a new schedule for an employee
+     * @param  name, start, end, starTime, endTime, post
+     */
+    public static void createNewSchedule(String name, String start, String end, String startTime, String endTime, String post) {
+        Document request = new Document("_id", new ObjectId());
+        request.append("name", name)
+                .append("post", post)
+                .append("start_date", start)
+                .append("end_date", end)
+                .append("start_time", startTime)
+                .append("end_time", endTime)
+                .append("supervisor_id", employeeIO.getUserId())
+                .append("supervisor_name", employeeIO.getFirstName() + " " + employeeIO.getLastName());
+
+        scheduleCollection.insertOne(request);
+
+    }
 }

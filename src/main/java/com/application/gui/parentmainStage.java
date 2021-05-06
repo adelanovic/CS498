@@ -1,13 +1,17 @@
 package com.application.gui;
 
+import com.application.connection.mongodbStream;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+
+import static com.application.gui.loginStage.mainStage;
 
 /**
  * Controller for the main and primary stage of the application after a successful login.
@@ -24,6 +28,7 @@ public class parentmainStage {
     public FXMLLoader viewsLoader;
     public regemployeeStage regEmployees;
     public supervisorModeStage supervisor;
+    public loginStage loginView;
     @FXML
     public AnchorPane mainstageAnchorPane;
     @FXML
@@ -58,10 +63,19 @@ public class parentmainStage {
     }
     
 /**
- * Logs out of the application and displays the login stage again
+ * Logs out of the application and displays the login stage again.
+ * Calls on the mongodbstream disconnect_database() method to close all threads.
  */
     public void logOutBtnClicked(ActionEvent actionEvent) {
-
+        try {
+            mongodbStream.disconnect_database();
+            viewsLoader = new FXMLLoader(getClass().getResource("/stages/login.fxml"));
+            Parent root = viewsLoader.load();
+            loginView = viewsLoader.getController();
+            logOutBtn.getScene().setRoot(root);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
 }

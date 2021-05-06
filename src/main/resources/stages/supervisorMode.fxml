@@ -174,10 +174,33 @@
                            </children></Pane>
                         <Pane fx:id="createaSchedulePane" layoutX="234.0" layoutY="71.0" prefHeight="344.0" prefWidth="672.0" style="-fx-border-color: black;">
                            <children>
-                              <DatePicker fx:id="dateSchedule" layoutX="57.0" layoutY="20.0" />
+                              <DatePicker fx:id="dateScheduleFrom" layoutX="57.0" layoutY="20.0" />
                               <ComboBox fx:id="comboBox" layoutX="57.0" layoutY="63.0" prefHeight="28.0" prefWidth="173.0" promptText="Posts" />
-                              <TextField layoutX="57.0" layoutY="106.0" prefHeight="29.0" prefWidth="173.0" promptText="Enter Name" />
-                              <Button fx:id="requestSuccessBtn1" layoutX="57.0" layoutY="144.0" mnemonicParsing="false" onAction="#requestBtnConfirmationClicked" prefHeight="29.0" prefWidth="173.0" style="-fx-background-color: #006400;" text="Submit" textFill="WHITE" />
+                              <TextField fx:id="scheduleEndTime" layoutX="266.0" layoutY="106.0" prefHeight="29.0" prefWidth="173.0" promptText="End Time 00:00 - 23:59" />
+                              <Button fx:id="submitSchedule" layoutX="57.0" layoutY="158.0" mnemonicParsing="false" onAction="#submitScheduleUpdate" prefHeight="29.0" prefWidth="173.0" style="-fx-background-color: #006400;" text="Submit" textFill="WHITE" />
+                              <DatePicker fx:id="dateScheduleTo" layoutX="266.0" layoutY="20.0" />
+                              <TextField fx:id="scheduleStartTime" layoutX="57.0" layoutY="106.0" prefHeight="29.0" prefWidth="173.0" promptText="Start Time 00:00 - 23:59" />
+                              <ComboBox fx:id="employeeComboBox" layoutX="266.0" layoutY="63.0" prefHeight="28.0" prefWidth="173.0" promptText="Roster" />
+                              <Pane fx:id="schedulelSuccess" layoutX="126.0" layoutY="35.0" prefHeight="200.0" prefWidth="441.0" style="-fx-background-color: #E8E8E8; -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" visible="false">
+                                 <children>
+                                    <Text fx:id="schedulelSuccessField" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule Submitted" textAlignment="CENTER" wrappingWidth="441.13671875">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="schedulelSuccessBtn" layoutX="133.0" layoutY="146.0" mnemonicParsing="false" onAction="#submitRequestSuccessBtn" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: #006400;" text="Close" textFill="WHITE" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="schedulError" layoutX="136.0" layoutY="45.0" prefHeight="200.0" prefWidth="441.0" style="-fx-background-color: #E8E8E8; -fx-border-color: black; -fx-border-radius: 5px; -fx-border-width: 2px;" visible="false">
+                                 <children>
+                                    <Text fx:id="scheduleErrorField" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule Submitted" textAlignment="CENTER" wrappingWidth="441.13671875">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="schedulelErrorBtn" layoutX="133.0" layoutY="146.0" mnemonicParsing="false" onAction="#scheduleErrorBtn" prefHeight="31.0" prefWidth="184.0" style="-fx-background-color: red;" text="Close" textFill="WHITE" />
+                                 </children>
+                              </Pane>
                            </children>
                         </Pane>
                      </children>
